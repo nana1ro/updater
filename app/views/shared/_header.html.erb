@@ -1,0 +1,24 @@
+<nav class="menubar">
+  <ul>
+
+  	<% if admin_signed_in? %>
+  	  <%= link_to "Add Lesson", new_admins_lesson_path %>
+  	  <%= link_to "Users", admins_users_path %>
+  	  <%= link_to "Logout", destroy_admin_session_path, method: :delete %>
+
+    <% elsif user_signed_in? %>
+  	  <%= link_to "MyPage", "#" %>
+  	  <%= link_to "Lessons", lessons_path %>
+  	  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+
+    <% else %>
+  	  <%= link_to "Top", root_path %>
+  	  <%= link_to "About", about_path %>
+  	  <%= link_to "Lessons", lessons_path %>
+  	  <%= link_to "LogIn", new_user_session_path %>
+  	  <%= link_to "SignUp", new_user_registration_path %>
+
+    <% end %>
+
+  </ul>
+</nav>

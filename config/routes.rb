@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
 
-  get '/' => 'home#top'
-  get '/about' => 'home#about'
+  root to: 'home#top'
+  get '/about' => 'home#about', as: 'about'
 
 
   devise_for :admins, contorollers: {
@@ -26,14 +26,18 @@ Rails.application.routes.draw do
   }
 
   	resources :attends, only: [:create, :index]
-  	resources :users, only: [:show, :edit, :update]
   	resources :lessons, only: [:index, :show] do
-  	  member do
-  	  	get 'slide'
-  	  end
-  	  collection do
-  	    get 'search'
-  	  end
+      member do
+        get 'slide'
+      end
+      collection do
+        get 'search'
+      end
+    end
+    resources :users, only: [:show, :edit, :update] do
+      collection do
+        get 'top'
+      end
     end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
