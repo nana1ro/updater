@@ -27,17 +27,11 @@ Rails.application.routes.draw do
 
   	resources :attends, only: [:create, :index]
   	resources :lessons, only: [:index, :show] do
-      member do
-        get 'slide'
-      end
-      collection do
-        get 'search'
-      end
+      get 'slide', on: :member
+      get 'search', on: :collection
     end
     resources :users, only: [:show, :edit, :update] do
-      collection do
-        get 'top'
-      end
+      get 'top', on: :collection
     end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
