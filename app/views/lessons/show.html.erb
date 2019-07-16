@@ -1,2 +1,12 @@
-<h1>Lessons#show</h1>
-<p>Find me in app/views/lessons/show.html.erb</p>
+<% @page_title = "レッスン詳細ページ" %>
+
+<h2>レッスン詳細ページ</h2>
+
+<%= @lesson.rank.name %>
+<%= @lesson.name %>
+<%= @lesson.time %>
+<%= @lesson.image %>
+
+<%= link_to "視聴ページへ", slide_lesson_path %>
+
+<%= @lesson.description %>

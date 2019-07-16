@@ -1,0 +1,5 @@
+<%= link_to "全てのレッスン", categories_path %>
+
+<% @categories.each do |category| %>
+  <%= link_to category.name, category_path(category.id) %>
+<% end %>

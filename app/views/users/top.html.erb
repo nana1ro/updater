@@ -1,3 +1,28 @@
 <% @page_title = "ユーザートップページ" %>
 
 <h2>ユーザートップページ</h2>
+
+<%= render "shared/time_chart" %>
+<%= render "shared/lesson_chart" %>
+
+<h4>学習中のカテゴリー一覧</h4>
+  <% @selected_category.lessons.each do |lesson| %>
+    <%= link_to lesson_path(lesson.id) do %>
+	    <%= lesson.image %>
+	    <%= lesson.rank.name %>
+	    <%= lesson.name %>
+	    <%= lesson.time %>
+    <!-- 秒数表示を分数表示に要変更 -->
+    <% end %>
+  <% end %>
+
+<h4>新着レッスン一覧</h4>
+  <% @new_lessons.each do |lesson| %>
+  	<%= link_to lesson_path(lesson.id) do %>
+      <%= lesson.image %>
+      <%= lesson.rank.name %>
+      <%= lesson.name %>
+      <%= lesson.time %>
+    <!-- 秒数表示を分数表示に要変更 -->
+    <% end %>
+  <% end %>

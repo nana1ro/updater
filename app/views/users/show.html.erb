@@ -1,2 +1,21 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% @page_title = "ユーザーマイページ" %>
+
+<h2>ユーザーマイページ</h2>
+
+<%= render "users/shared/mypage_tab" %>
+
+<h4>プロフィール設定</h4>
+
+<%= render "shared/time_chart" %>
+<%= render "shared/recent_time_chart" %>
+
+<%= form_for @user do |f| %>
+
+  <%= f.text_field :last_name, value: @user.last_name %>
+  <%= f.text_field :first_name, value:  @user.first_name %>
+  <%= f.text_field :last_name, value: @user.last_name %>
+  <%= f.text_field :first_name, value:  @user.first_name %>
+  <%= f.email_field :email, value: @user.email %>
+  <%= f.submit "編集" %>
+  
+<% end %>
