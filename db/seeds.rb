@@ -9,9 +9,9 @@
 admin = Admin.new(email:'admins@admins.com', password:'admins')
 admin.save!
 
-user = User.new(last_name:'武田', first_name:'信玄', last_name_kana:'タケダ', first_name_kana:'シンゲン', email:'takeda@takeda.com', password:'takeda', category_id:'', lesson_id:'', target_time:'', learning_time:'')
+user = User.new(last_name:'武田', first_name:'信玄', last_name_kana:'タケダ', first_name_kana:'シンゲン', email:'takeda@takeda.com', password:'takeda', category_id:'1', lesson_id:'1', target_time:'', learning_time:'')
 user.save!
-user = User.new(last_name:'上杉', first_name:'謙信', last_name_kana:'ウエスギ', first_name_kana:'ケンシン', email:'uesugi@uesugi.com', password:'uesugi', category_id:'', lesson_id:'', target_time:'', learning_time:'')
+user = User.new(last_name:'上杉', first_name:'謙信', last_name_kana:'ウエスギ', first_name_kana:'ケンシン', email:'uesugi@uesugi.com', password:'uesugi', category_id:'2', lesson_id:'3', target_time:'', learning_time:'')
 user.save!
 
 Category.create(name:'thinking')
@@ -32,3 +32,8 @@ Lesson.create(category_id:'1', rank_id:'1', name:'ロジックツリー', image:
 Lesson.create(category_id:'1', rank_id:'2', name:'クリティカルシンキング', image:'', video:'', description:'text', time:'900', status:'公開中')
 Lesson.create(category_id:'2', rank_id:'1', name:'プレゼンテーションスキル', image:'', video:'', description:'text', time:'900', status:'公開中')
 Lesson.create(category_id:'2', rank_id:'2', name:'ネゴシエーションスキル', image:'', video:'', description:'text', time:'900', status:'公開中')
+
+Attend.create(user_id:'1', category_id:'1', lesson_id:'1')
+Attend.create(user_id:'1', category_id:'2', lesson_id:'4')
+Attend.create(user_id:'2', category_id:'2', lesson_id:'3')
+Attend.create(user_id:'2', category_id:'2', lesson_id:'4')

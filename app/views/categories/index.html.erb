@@ -1,0 +1,15 @@
+<% @page_title = "レッスン一覧" %>
+
+<h2>カテゴリー別レッスン一覧</h2>
+
+<%= render "categories/shared/categories_tab" %>
+
+<% @lessons.each do |lesson| %>
+  <%= link_to lesson_path(lesson.id) do %>
+	<%= lesson.image %>
+	<%= lesson.rank.name %>
+	<%= lesson.name %>
+	<%= lesson.time %>
+  <!-- 秒数表示を分数表示に要変更 -->
+  <% end %>
+<% end %>

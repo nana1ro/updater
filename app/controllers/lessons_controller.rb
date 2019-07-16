@@ -1,13 +1,14 @@
 class LessonsController < ApplicationController
-  def index
+
+  def show
+  	@lesson = Lesson.find(params[:id])
   end
 
   def search
   end
 
-  def show
+  def slide
+  	@lesson = Lesson.find(params[:id])
   end
 
-  def slide
-  end
 end

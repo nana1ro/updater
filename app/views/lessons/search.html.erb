@@ -1,2 +1,17 @@
-<h1>Lessons#search</h1>
-<p>Find me in app/views/lessons/search.html.erb</p>
+<% @page_title = "検索結果ページ" %>
+
+<h2>検索結果ページ</h2>
+
+<% @search_lessons.each do |lesson| %>
+  <%= link_to lesson_path(lesson.id) do %>
+	<%= lesson.image %>
+	<%= lesson.rank.name %>
+	<%= lesson.name %>
+	<%= lesson.time %>
+  <!-- 秒数表示を分数表示に要変更 -->
+  <% end %>
+<% end %>
+
+<% if @search_lessons.blank? %>
+  <%= "該当するレッスンはありませんでした" %>
+<% end %>

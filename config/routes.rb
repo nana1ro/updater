@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root to: 'home#top'
   get '/about' => 'home#about', as: 'about'
 
@@ -25,12 +24,14 @@ Rails.application.routes.draw do
   	registrations: 'users/registrations'
   }
 
-  	resources :attends, only: [:create, :index]
-  	resources :lessons, only: [:index, :show] do
+  	resources :attends, only: [:create]
+    resources :categories, only: [:index, :show]
+  	resources :lessons, only: [:show] do
       get 'slide', on: :member
       get 'search', on: :collection
     end
     resources :users, only: [:show, :edit, :update] do
+      get 'history', on: :member
       get 'top', on: :collection
     end
 
