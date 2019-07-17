@@ -1,2 +1,14 @@
-<h1>Admins::Ranks#index</h1>
-<p>Find me in app/views/admins/ranks/index.html.erb</p>
+<% @page_title = "管理者/カテゴリーページ" %>
+
+<h2>ランク追加</h2>
+
+<%= form_for @rank, url: admins_ranks_path do |f| %>
+  <%= f.text_field :name, required: true %>
+  <%= f.submit "登録" %>
+<% end %>
+
+<h2>ランク一覧</h2>
+
+<% @ranks.each do |rank| %>
+  <%= link_to rank.name, admins_rank_path(rank.id) %>
+<% end %>

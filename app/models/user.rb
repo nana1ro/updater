@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :attends, dependent: :destroy
+  belongs_to :category, optional: true
+  belongs_to :lesson, optional: true
 
 end

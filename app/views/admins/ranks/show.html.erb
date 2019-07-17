@@ -1,2 +1,20 @@
-<h1>Admins::Ranks#show</h1>
-<p>Find me in app/views/admins/ranks/show.html.erb</p>
+<% @page_title = "管理者/ランク詳細ページ" %>
+
+<h2>ランク編集</h2>
+
+<%= form_for @rank, url: admins_rank_path do |f| %>
+  <%= f.text_field :name, value: @rank.name, required: true %>
+  <%= f.submit "編集" %>
+<% end %>
+<%= button_to "削除", admins_rank_path, method: :delete %>
+
+<% @rank.lessons.each do |lesson| %>
+  <%= link_to admins_lesson_path(lesson.id) do %>
+	<%= lesson.image %>
+	<%= lesson.rank.name %>
+	<%= lesson.name %>
+	<%= lesson.time %>
+  <!-- XXX: 秒数表示を分数表示に要変更 -->
+  <% end %>
+<% end %>
+

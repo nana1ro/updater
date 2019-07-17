@@ -1,21 +1,23 @@
 Rails.application.routes.draw do
 
+
   root to: 'home#top'
   get '/about' => 'home#about', as: 'about'
 
 
-  devise_for :admins, contorollers: {
+  namespace :admins do
+    root to: 'home#top'
+    resources :categories, except: [:new, :edit]
+    resources :lessons
+    resources :ranks, except: [:new, :edit]
+    resources :users, only: [:index, :show, :destroy]
+  end
+
+  devise_for :admins, controllers: {
   	sessions: 'admins/sessions',
   	passwords: 'admins/passwords',
   	registrations: 'admins/registrations'
   }
-
-  namespace :admins do
-    resources :categories
-    resources :lessons
-    resources :ranks
-    resources :users, only: [:index, :show, :destroy]
-  end
 
 
   devise_for :users, controllers: {

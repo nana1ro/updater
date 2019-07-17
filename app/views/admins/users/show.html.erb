@@ -1,2 +1,37 @@
-<h1>Admins::Users#show</h1>
-<p>Find me in app/views/admins/users/show.html.erb</p>
+<% @page_title = "管理者/ユーザー詳細ページ" %>
+
+<h2>ユーザー詳細ページ</h2>
+
+<%= @user.last_name + @user.first_name %>
+  <!-- TODO: nameの書き方を見直す -->
+<%= @user.last_name_kana + @user.first_name_kana %>
+<%= @user.email %>
+<%= @user.category.name %>
+<%= @user.lesson.name %>
+<%= button_to "強制退会", admins_user_path, method: :delete %>
+
+<h2>カテゴリーごとの履歴</h2>
+
+<% @categories.each do |category| %>
+
+  <%= category.name %>
+
+  <% category.lessons.each do |lesson| %>
+
+  <% attended_lesson = Attend.find_by(user_id: @user.id, lesson_id: lesson.id) %>
+
+  <% if attended_lesson %>
+    <%= "⚫️" %>
+    <%= link_to lesson.name, admins_lesson_path(lesson.id) %>
+    <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+  <% else %>
+  	<%= "⚪️" %>
+    <<%= link_to lesson.name, admins_lesson_path(lesson.id) %>
+    <%= "未視聴" %>
+  <% end %>
+
+  <% end %>
+
+<br>
+
+<% end %>

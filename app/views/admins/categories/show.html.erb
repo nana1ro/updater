@@ -1,2 +1,19 @@
-<h1>Admins::Categories#show</h1>
-<p>Find me in app/views/admins/categories/show.html.erb</p>
+<% @page_title = "管理者/カテゴリー詳細ページ" %>
+
+<h2>カテゴリー編集</h2>
+
+<%= form_for @category, url: admins_category_path do |f| %>
+  <%= f.text_field :name, value: @category.name, required: true %>
+  <%= f.submit "編集" %>
+<% end %>
+<%= button_to "削除", admins_category_path, method: :delete %>
+
+<% @category.lessons.each do |lesson| %>
+  <%= link_to admins_lesson_path(lesson.id) do %>
+	<%= lesson.image %>
+	<%= lesson.rank.name %>
+	<%= lesson.name %>
+	<%= lesson.time %>
+  <!-- XXX: 秒数表示を分数表示に要変更 -->
+  <% end %>
+<% end %>

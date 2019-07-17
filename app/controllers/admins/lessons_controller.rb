@@ -7,9 +7,11 @@ class Admins::LessonsController < ApplicationController
   end
 
   def index
+    @categories = Category.all
   end
 
   def show
+    @lesson = Lesson.find(params[:id])
   end
 
   def edit
