@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def top
-  	@selected_category = Category.find(current_user.category_id)
+  	@selected_category = current_user.category
   	@new_lessons = Lesson.order(created_at: :desc)
   end
 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def history
-  	@selected_category = Category.find(current_user.category_id)
+  	@selected_category = current_user.category
     @unselected_categories = Category.where.not(id: current_user.category_id)
   end
 

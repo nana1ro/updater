@@ -4,13 +4,16 @@
 
 <h4>学習中のカテゴリーの履歴</h4>
 
+<%= @selected_category.name %>
+
 <% @selected_category.lessons.each do |lesson| %>
 
-  <% completed_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
-  <% if completed_lesson %>
+  <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
+
+  <% if attended_lesson %>
   	<%= "⚫️" %>
     <%= link_to lesson.name, lesson_path(lesson.id) %>
-    <%= completed_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+    <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
   <% else %>
   	<%= "⚪️" %>
     <%= link_to lesson.name, lesson_path(lesson.id) %>
@@ -21,17 +24,20 @@
 
 <br>
 
+<h4>その他のカテゴリーの履歴</h4>
+
 <% @unselected_categories.each do |category| %>
 
-  <% category.name %>
+  <%= category.name %>
 
   <% category.lessons.each do |lesson| %>
 
-  <% completed_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
-  <% if completed_lesson %>
+  <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
+
+  <% if attended_lesson %>
     <%= "⚫️" %>
     <%= link_to lesson.name, lesson_path(lesson.id) %>
-    <%= completed_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+    <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
   <% else %>
   	<%= "⚪️" %>
     <<%= link_to lesson.name, lesson_path(lesson.id) %>

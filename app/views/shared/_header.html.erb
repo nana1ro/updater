@@ -8,7 +8,9 @@
     <% end %>
 
   	<% if admin_signed_in? %>
-  	  <%= link_to "Add Lesson", new_admins_lesson_path %>
+  	  <%= link_to "Lesson", admins_lessons_path %>
+      <%= link_to "Category", admins_categories_path %>
+      <%= link_to "Rank", admins_ranks_path %>
   	  <%= link_to "Users", admins_users_path %>
   	  <%= link_to "Logout", destroy_admin_session_path, method: :delete %>
 
