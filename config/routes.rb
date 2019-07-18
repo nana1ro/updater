@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :admins do
     root to: 'home#top'
     resources :categories, except: [:new, :edit]
-    resources :lessons
+    resources :lessons, except: [:destroy]
     resources :ranks, except: [:new, :edit]
     resources :users, only: [:index, :show, :destroy]
   end
