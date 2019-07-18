@@ -2,10 +2,7 @@
 
 <h2>ランク追加</h2>
 
-<%= form_for @rank, url: admins_ranks_path do |f| %>
-  <%= f.text_field :name, required: true %>
-  <%= f.submit "登録" %>
-<% end %>
+<%= render "rank_form" %>
 
 <h2>ランク一覧</h2>
 

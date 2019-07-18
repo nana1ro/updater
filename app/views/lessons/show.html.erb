@@ -5,7 +5,9 @@
 <%= @lesson.rank.name %>
 <%= @lesson.name %>
 <%= @lesson.time %>
-<%= @lesson.image %>
+<% if @lesson.image? %>
+  <%= image_tag @lesson.image.thumb.url %>
+<% end %>
 
 <%= link_to "視聴ページへ", slide_lesson_path %>
 

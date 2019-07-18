@@ -1,0 +1,8 @@
+<%= form_for [:admins, @rank] do |f| %>
+
+  <%= f.label "ランク名" %>
+  <%= f.text_field :name, required: true %>
+
+  <%= f.submit "登録" %>
+
+<% end %>

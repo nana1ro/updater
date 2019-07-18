@@ -2,15 +2,15 @@
 
 <h2>カテゴリー編集</h2>
 
-<%= form_for @category, url: admins_category_path do |f| %>
-  <%= f.text_field :name, value: @category.name, required: true %>
-  <%= f.submit "編集" %>
-<% end %>
+<%= render "category_form" %>
+
 <%= button_to "削除", admins_category_path, method: :delete %>
 
 <% @category.lessons.each do |lesson| %>
   <%= link_to admins_lesson_path(lesson.id) do %>
-	<%= lesson.image %>
+	<% if lesson.image? %>
+    <%= image_tag lesson.image.thumb.url %>
+  <% end %>
 	<%= lesson.rank.name %>
 	<%= lesson.name %>
 	<%= lesson.time %>

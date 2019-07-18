@@ -1,20 +1,28 @@
 <%= form_for @lesson, url: admins_lessons_path do |f| %>
 
-<h4>レッスン名</h4>
+  <%= f.label "ファイル名" %>
   <%= f.text_field :name, required: true %>
-<h4>カテゴリー</h4>
+
+  <%= f.label "カテゴリー" %>
   <%= f.collection_select :category_id, Category.all, :id, :name, required: true %>
-<h4>ランク</h4>
+
+  <%= f.label "ランク" %>
   <%= f.collection_select :rank_id, Rank.all, :id, :name, required: true %>
-<p>画像アップロード</p>
+
+  <%= f.label "画像アップロード" %>
+  <%= f.file_field :image %>
+
 <p>動画アップロード</p>
-<h4>説明文</h4>
-  <%= f.text_field :description, required: true %>
-<h4>時間</h4>
+
+  <%= f.label "時間" %>
   <%= f.number_field :time, required: true %>
-<h4>公開ステータス</h4>
+
+  <%= f.label "説明文" %>
+  <%= f.text_field :description, required: true %>
+
+  <%= f.label "公開ステータス" %>
   <%= f.select :status, Lesson.statuses.keys.to_a, {} %>
 
-<%= f.submit "登録" %>
+  <%= f.submit "登録" %>
 
 <% end %>
