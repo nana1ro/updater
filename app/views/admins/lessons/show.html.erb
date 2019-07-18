@@ -5,7 +5,11 @@
 <%= @lesson.rank.name %>
 <%= @lesson.name %>
 <%= @lesson.time %>
-<%= @lesson.image %>
+
+<% if @lesson.image? %>
+  <%= image_tag @lesson.image.thumb.url %>
+<% end %>
+
 <%= @lesson.description %>
 
 <%= link_to "編集ページへ", edit_admins_lesson_path %>

@@ -1,5 +1,7 @@
 class Lesson < ApplicationRecord
 
+  mount_uploader :image, ImageUploader
+
   enum status: { 公開中: 0, 公開停止中: 1 }
 
   belongs_to :category

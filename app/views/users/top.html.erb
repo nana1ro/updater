@@ -2,13 +2,15 @@
 
 <h2>ユーザートップページ</h2>
 
-<%= render "shared/time_chart" %>
-<%= render "shared/lesson_chart" %>
+<%= render "time_chart" %>
+<%= render "lesson_chart" %>
 
 <h4>学習中のカテゴリー一覧</h4>
   <% @selected_category.lessons.each do |lesson| %>
     <%= link_to lesson_path(lesson.id) do %>
-	    <%= lesson.image %>
+	    <% if lesson.image? %>
+        <%= image_tag lesson.image.thumb.url %>
+      <% end %>
 	    <%= lesson.rank.name %>
 	    <%= lesson.name %>
 	    <%= lesson.time %>
@@ -19,7 +21,9 @@
 <h4>新着レッスン一覧</h4>
   <% @new_lessons.each do |lesson| %>
   	<%= link_to lesson_path(lesson.id) do %>
-      <%= lesson.image %>
+      <% if lesson.image? %>
+        <%= image_tag lesson.image.thumb.url %>
+      <% end %>
       <%= lesson.rank.name %>
       <%= lesson.name %>
       <%= lesson.time %>

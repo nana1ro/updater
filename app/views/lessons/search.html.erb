@@ -4,7 +4,9 @@
 
 <% @search_lessons.each do |lesson| %>
   <%= link_to lesson_path(lesson.id) do %>
-	<%= lesson.image %>
+	<% if lesson.image? %>
+    <%= image_tag lesson.image.thumb.url %>
+  <% end %>
 	<%= lesson.rank.name %>
 	<%= lesson.name %>
 	<%= lesson.time %>
