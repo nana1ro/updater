@@ -7,7 +7,7 @@
 <%= @lesson.time %>
 
 <% if @lesson.image? %>
-  <%= image_tag @lesson.image.thumb.url %>
+  <%= image_tag @lesson.image.url, width: 300, heith: 200 %>
 <% end %>
 
 <%= @lesson.description %>

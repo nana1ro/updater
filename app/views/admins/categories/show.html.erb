@@ -9,8 +9,8 @@
 <% @category.lessons.each do |lesson| %>
   <%= link_to admins_lesson_path(lesson.id) do %>
 	<% if lesson.image? %>
-    <%= image_tag lesson.image.thumb.url %>
-  <% end %>
+      <%= image_tag lesson.image.url, width: 300, heith: 200 %>
+    <% end %>
 	<%= lesson.rank.name %>
 	<%= lesson.name %>
 	<%= lesson.time %>
