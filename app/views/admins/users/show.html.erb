@@ -2,9 +2,8 @@
 
 <h2>ユーザー詳細ページ</h2>
 
-<%= @user.last_name + @user.first_name %>
-  <!-- TODO: nameの書き方を見直す -->
-<%= @user.last_name_kana + @user.first_name_kana %>
+<%= @user.fullname %>
+<%= @user.fullname_kana %>
 <%= @user.email %>
 <%= @user.category.name %>
 <%= @user.lesson.name %>

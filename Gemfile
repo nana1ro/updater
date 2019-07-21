@@ -78,3 +78,5 @@ gem 'jquery-rails'
 gem 'ransack'
 
 gem 'rmagick'
+
+gem 'chart-js-rails'

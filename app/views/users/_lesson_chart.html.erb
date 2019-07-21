@@ -1,1 +1,115 @@
-<h2>レッスンのチャート</h2>
+<%= javascript_tag do %>
+  data1 = <%= raw @data1.to_json %>;
+  data2 = <%= raw @data2.to_json %>;
+  data3 = <%= raw @data3.to_json %>;
+  data4 = <%= raw @data4.to_json %>;
+  data5 = <%= raw @data5.to_json %>;
+  data6 = <%= raw @data6.to_json %>;
+  data7 = <%= raw @data7.to_json %>;
+  data8 = <%= raw @data8.to_json %>;
+<% end %>
+
+<script>
+  var ctx = document.getElementById("lessonChart");
+  var lessonChart = new Chart(ctx,{
+  	type: "bar",
+  	data: {
+  		labels: ["Thinking", "Communication", "Marketing", "Leadership", "Financial", "Global", "CarrerBuilding", "Technovate"],
+  		datasets: [{
+  			label: '受講数',
+  			data: [data1,data2,data3,data4,data5,data6,data7,data8],
+        // TODO: 初期データ投入後に変更
+  			backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(255, 159, 64, 0.2)",
+                "rgba(190, 209, 45, 0.2)",
+                "rgba(52, 87, 119, 0.2)"
+            ],
+            borderColor: [
+                "rgba(255,99,132,1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)",
+                "rgba(190, 209, 45, 1)",
+                "rgba(52, 87, 119, 1)"
+
+            ],
+            borderWidth: 1
+  		}]
+  	},
+  	options: {
+  		events: [],
+  		responsive: false,
+  		title: {
+            display: true,
+            fontSize: 20,
+            text: "受講チャート"
+        },
+        legend: {
+            display: false
+        },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    fontSize: 8,
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 10
+                }
+            }]
+        }
+    }
+  });
+</script>
+
+<!-- TODO: 全体のレイアウトを見てから下記のレーダーチャートにするか上記の棒グラフにするか要決定 -->
+
+<!-- <script>
+
+	var ctx = document.getElementById("lessonChart");
+    var lessonChart = new Chart(ctx, {
+        type: "radar",
+        data: {
+            labels: ["Thinking", "Communication", "Marketing", "Leadership", "Financial", "Global", "CarrerBuilding", "Technovate"],
+            datasets: [
+                {
+                    label: "受講範囲",
+                    data: [4,2,2,1,5,2,3,6],
+                    backgroundColor: "rgba(54, 162, 235, 0.2)",
+                    borderColor: "rgba(54, 162, 235, 1)",
+                    borderWidth: 0.5
+                }
+            ]
+        },
+        options: {
+        	events: [],
+            responsive: false,
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "受講チャート"
+            },
+            legend: {
+                position: "right"
+            },
+            scale: {
+                ticks: {
+                    min: 0,
+                    max: 10,
+                }
+            }
+        }
+    });
+
+</script> -->
+

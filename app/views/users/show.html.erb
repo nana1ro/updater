@@ -6,7 +6,16 @@
 
 <h4>プロフィール設定</h4>
 
+<div class="chart-container">
+  <canvas id="timeChart" width="300" height="200"></canvas>
+</div>
+
 <%= render "time_chart" %>
+
+<div class="chart-container">
+  <canvas id="historyChart" width="300" height="200"></canvas>
+</div>
+
 <%= render "recent_time_chart" %>
 
 <%= render "mypage_form" %>

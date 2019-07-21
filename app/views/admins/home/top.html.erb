@@ -4,18 +4,19 @@
 
 <h4>レッスンの受講回数ランキング</h4>
 <% @lesson_ranking.each do |lesson| %>
-  <%= lesson.name %>
-  <%= Attend.where(lesson_id: lesson.id).count %>
+  <% attend = Attend.where(lesson_id: lesson.id) %>
+    <%= lesson.name %>
+    <%= attend.count %>
 <% end %>
 
 <h4>全登録ユーザー数</h4>
 <%= @number_of_users %>
 
-<h4>（1時間以内に）登録したユーザー数</h4>
+<h4>1週間以内に登録したユーザー数</h4>
 <%= @recent_number_of_users %>
 
 <h4>レッスンの受講された全回数</h4>
 <%= @number_of_attends %>
 
-<h4>（1時間以内に）受講された回数</h4>
+<h4>1週間以内に受講された回数</h4>
 <%= @recent_number_of_attends %>

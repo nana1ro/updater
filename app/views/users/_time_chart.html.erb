@@ -1,1 +1,39 @@
-<h2>学習時間のチャート</h2>
+<%= javascript_tag do %>
+  learning_time = <%= raw @learning_time.to_json %>;
+  targeting_time = <%= raw @targeting_time.to_json %>;
+<% end %>
+
+<script>
+
+    var ctx = document.getElementById("timeChart");
+    var timeChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+            labels:  ["学習時間", "目標までの時間"],
+            datasets: [
+                {
+                    label: "1週間の学習時間目標",
+                    data: [learning_time, targeting_time],
+                    // TODO: 初期データ投入後に変更
+                    backgroundColor: ["blue", "white"],
+                    borderColor: ["rgba(54, 162, 235, 1)","rgba(54, 162, 235, 1)"],
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+        	events: [],
+            responsive: false,
+            cutoutPercentage: 65,
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "1週間の学習時間目標"
+            },
+            legend: {
+                position: "right"
+            }
+        }
+    });
+
+</script>
