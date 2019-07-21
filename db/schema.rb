@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_13_043718) do
+ActiveRecord::Schema.define(version: 2019_07_20_171236) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_043718) do
     t.integer "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "time"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -70,9 +71,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_043718) do
     t.string "last_name_kana"
     t.string "first_name_kana"
     t.integer "category_id"
-    t.integer "lesson_id"
     t.integer "target_time"
-    t.integer "learning_time"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

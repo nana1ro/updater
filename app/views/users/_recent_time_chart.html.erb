@@ -1,1 +1,47 @@
-<h2>最近の学習時間のチャート</h2>
+<%= javascript_tag do %>
+  learning_time = <%= raw @learning_time.to_json %>;
+  learning_time_2 = <%= raw @learning_time_before_two_weeks.to_json %>;
+  learning_time_3 = <%= raw @learning_time_before_three_weeks.to_json %>;
+  target_time = <%= raw current_user.target_time.to_json %>;
+<% end %>
+
+<script>
+
+  var ctx = document.getElementById("historyChart");
+  var historyChart = new Chart(ctx,{
+    type: "horizontalBar",
+    data: {
+      labels: ["今週", "1週間前", "2週間前"],
+      datasets: [{
+        label: "最近の学習時間",
+        data: [learning_time, learning_time_2, learning_time_3],
+        // 初期データ投入後に変更
+        backgroundColor: ["blue", "blue", "blue"],
+            borderColor: ["rgba(54, 162, 235, 1)","rgba(54, 162, 235, 1)","rgba(54, 162, 235, 1)"],
+            borderWidth: 1
+      }]
+    },
+    options: {
+            events: [],
+            responsive: false,
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "最近の学習時間"
+            },
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        display: false,
+                        max: target_time,
+                        min: 0
+                    }
+                }]
+            }
+        }
+    });
+
+</script>
