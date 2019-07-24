@@ -1,5 +1,6 @@
 <%= form_for [:admins, @rank] do |f| %>
 
+  <%= render 'shared/errors', obj: f.object %>
   <%= f.label "ランク名" %>
   <%= f.text_field :name, required: true %>
 

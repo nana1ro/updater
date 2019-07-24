@@ -1,5 +1,7 @@
 <%= form_for [:admins, @lesson] do |f| %>
 
+  <%= render 'shared/errors', obj: f.object %>
+
   <%= f.label "ファイル名" %>
   <%= f.text_field :name, required: true %>
 

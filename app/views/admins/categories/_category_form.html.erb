@@ -1,5 +1,6 @@
 <%= form_for [:admins, @category] do |f| %>
 
+  <%= render 'shared/errors', obj: f.object %>
   <%= f.label "カテゴリー名" %>
   <%= f.text_field :name, required: true %>
 

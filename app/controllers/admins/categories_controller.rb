@@ -1,9 +1,15 @@
 class Admins::CategoriesController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def create
-    category = Category.new(category_params)
-    category.save
-    redirect_to admins_categories_path
+    @category = Category.new(category_params)
+    if @category.save
+      redirect_to admins_categories_path
+    else
+      @categories = Category.all
+      render 'index'
+    end
   end
 
   def index

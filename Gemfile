@@ -80,3 +80,5 @@ gem 'ransack'
 gem 'rmagick'
 
 gem 'chart-js-rails'
+
+gem 'rails-i18n'

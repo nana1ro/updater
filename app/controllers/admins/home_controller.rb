@@ -1,5 +1,7 @@
 class Admins::HomeController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def top
   	@lesson_ranking = Lesson.create_ranking
   	@number_of_users = User.count

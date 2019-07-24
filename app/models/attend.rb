@@ -5,6 +5,9 @@ class Attend < ApplicationRecord
   belongs_to :user
 
 
+  validates :user_id, :category_id, :lesson_id, :time, numericality: { only_integer: true }
+
+
   def self.recent_attends
   	Attend.where(created_at: [1.week.ago..Time.zone.now])
   end

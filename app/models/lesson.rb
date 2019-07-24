@@ -11,6 +11,12 @@ class Lesson < ApplicationRecord
   has_many :users
 
 
+  validates :category_id, :rank_id, :name, :description, :time, :status, presence: true
+  validates :category_id, :rank_id, :time, numericality: { only_integer: true }
+  validates :name, length: { maximum: 20 }
+  validates :description, length: { maximum: 500 }
+
+
   def self.create_ranking
   	Lesson.find(Attend.group(:lesson_id).order('count(lesson_id) desc').limit(3).pluck(:lesson_id))
   end
