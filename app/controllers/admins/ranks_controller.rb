@@ -1,9 +1,15 @@
 class Admins::RanksController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def create
-    rank = Rank.new(rank_params)
-    rank.save
-    redirect_to admins_ranks_path
+    @rank = Rank.new(rank_params)
+    if @rank.save
+      redirect_to admins_ranks_path
+    else
+      @ranks = Rank.all
+      render 'index'
+    end
   end
 
   def index

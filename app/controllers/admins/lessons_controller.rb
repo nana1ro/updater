@@ -1,13 +1,18 @@
 class Admins::LessonsController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def new
     @lesson = Lesson.new
   end
 
   def create
     @lesson = Lesson.new(lesson_params)
-    @lesson.save
-    redirect_to admins_lessons_path
+    if @lesson.save
+      redirect_to admins_lessons_path
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -32,7 +37,16 @@ class Admins::LessonsController < ApplicationController
   private
 
   def lesson_params
-    params.require(:lesson).permit(:category_id, :rank_id, :name, :image, :video, :description, :time, :status)
+    params.require(:lesson).permit(
+      :category_id,
+      :rank_id,
+      :name,
+      :image,
+      :video,
+      :description,
+      :time,
+      :status
+    )
   end
 
 end

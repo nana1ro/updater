@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   def top
     @selected_category = current_user.category
     @new_lessons = Lesson.order(created_at: :desc).limit(10)
@@ -45,7 +47,17 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :last_name, :first_name, :last_name_kana, :first_name_kana, :category_id, :target_time)
+    params.require(:user).permit(
+      :email,
+      :password,
+      :password_confirmation,
+      :last_name,
+      :first_name,
+      :last_name_kana,
+      :first_name_kana,
+      :category_id,
+      :target_time
+    )
   end
 
 end
