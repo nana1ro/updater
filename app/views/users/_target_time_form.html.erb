@@ -1,0 +1,12 @@
+<%= form_with(url: target_time_user_path(@user.id), local: true) do |f| %>
+
+  <%= render 'shared/errors', obj: user %>
+  <%= f.label "時間" %>
+  <%= f.number_field :hour, min:"0", value: @user.target_time / 3600 %>
+
+  <%= f.label "分数" %>
+  <%= f.number_field :minute, min:"0", value: @user.target_time % 3600 / 60 %>
+
+  <%= f.submit "登録" %>
+
+<% end %>

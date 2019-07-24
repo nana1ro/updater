@@ -12,24 +12,14 @@ class Lesson < ApplicationRecord
 
 
   validates :category_id, :rank_id, :name, :description, :time, :status, presence: true
-  validates :category_id, :rank_id, :time, numericality: { only_integer: true }
+  validates :category_id, :rank_id, numericality: { only_integer: true }
   validates :name, length: { maximum: 20 }
   validates :description, length: { maximum: 500 }
+  validates :time, numericality: { greater_than: 0 }
 
 
   def self.create_ranking
   	Lesson.find(Attend.group(:lesson_id).order('count(lesson_id) desc').limit(3).pluck(:lesson_id))
-  end
-
-
-  def display_time
-  	if time >= 3600
-  	  "#{time/3600}時間#{time%3600/60}分#{time%3600%60%60}秒"
-  	elsif time < 3600 && time >= 60
-  	  "#{time/60}分#{time%60}秒"
-  	else
-  	  "#{time}秒"
-  	end
   end
 
 end

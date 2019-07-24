@@ -1,4 +1,4 @@
-<%= form_for [:admins, @lesson] do |f| %>
+<%= form_with(model: [:admins, lesson], local: true) do |f| %>
 
   <%= render 'shared/errors', obj: f.object %>
 
@@ -23,8 +23,14 @@
   <%= f.label "動画アップロード" %>
   <%= f.file_field :video %>
 
-  <%= f.label "時間（秒数にて登録）" %>
-  <%= f.number_field :time, required: true %>
+  <%= f.label "時間" %>
+  <%= f.number_field :hour, min:"0" %>
+
+  <%= f.label "分数" %>
+  <%= f.number_field :minute, min:"0" %>
+
+  <%= f.label "秒数" %>
+  <%= f.number_field :second, min:"0" %>
 
   <%= f.label "説明文" %>
   <%= f.text_field :description, required: true %>
@@ -32,6 +38,6 @@
   <%= f.label "公開ステータス" %>
   <%= f.select :status, Lesson.statuses.keys.to_a, {} %>
 
-  <%= f.submit "編集" %>
+  <%= f.submit "登録" %>
 
 <% end %>

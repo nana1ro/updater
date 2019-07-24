@@ -12,37 +12,75 @@ class UsersController < ApplicationController
 
     attends_in_a_week = Attend.recent_attends.where(user_id: current_user.id)
     @learning_time = attends_in_a_week.sum(:time)
-    @targeting_time = current_user.target_time - @learning_time
-    # FIXME: 時間が登録されてなかった場合にerrorが出てしまう
 
+    if current_user.target_time == nil
+      @targeting_time = 0
+    elsif current_user.target_time >= @learning_time
+      @targeting_time = current_user.target_time - @learning_time
+    else
+      @targeting_time == @learning_time
+    end
   end
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render 'show'
+    end
+  end
+
+  def history
+    @user = User.find(params[:id])
+
+    @selected_category = current_user.category
+    @unselected_categories = Category.where.not(id: current_user.category_id)
+    @categories = Category.all
 
     attends_in_a_week = Attend.recent_attends.where(user_id: current_user.id)
     @learning_time = attends_in_a_week.sum(:time)
-    @targeting_time = current_user.target_time - @learning_time
-    # FIXME: 時間が登録されてなかった場合にerrorが出てしまう
+
+    if current_user.target_time == nil
+      @targeting_time = 0
+    elsif current_user.target_time >= @learning_time
+      @targeting_time = current_user.target_time - @learning_time
+    else
+      @targeting_time == @learning_time
+    end
 
     attends_before_two_weeks = Attend.two_weeks_attends.where(user_id: current_user.id)
     @learning_time_before_two_weeks = attends_before_two_weeks.sum(:time)
 
     attends_before_three_weeks = Attend.three_weeks_attends.where(user_id: current_user.id)
     @learning_time_before_three_weeks = attends_before_three_weeks.sum(:time)
-
   end
 
-  def update
+  def target_time
     @user = User.find(params[:id])
-    @user.update(user_params)
-    render "show"
+    @user.target_time = (params[:hour].to_i * 3600) + (params[:minute].to_i * 60)
+    if @user.save
+      redirect_to history_user_path(@user.id)
+    else
+      @categories = Category.all
+      attends_in_a_week = Attend.recent_attends.where(user_id: current_user.id)
+      @learning_time = attends_in_a_week.sum(:time)
+
+      if current_user.target_time == nil
+        @targeting_time = 0
+      elsif current_user.target_time >= @learning_time
+        @targeting_time = current_user.target_time - @learning_time
+      else
+        @targeting_time == @learning_time
+      end
+      render 'history'
+    end
   end
 
-  def history
-    @selected_category = current_user.category
-    @unselected_categories = Category.where.not(id: current_user.category_id)
-  end
 
   private
 
