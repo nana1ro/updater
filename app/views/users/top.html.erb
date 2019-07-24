@@ -4,16 +4,18 @@
 
 <div class="chart-container">
   <canvas id="timeChart" width="300" height="200"></canvas>
+  <%= "目標：#{rough_time(current_user.target_time)}" %>
+  <%= "実績：#{rough_time(@learning_time)}" %>
+  <%= "達成率：#{number_to_percentage(@learning_time / current_user.target_time.to_f * 100, precision: 0)}" %>
 </div>
-
 <%= render "time_chart" %>
 
 <div class="chart-container">
   <canvas id="lessonChart" width="400" height="300"></canvas>
 </div>
-
 <%= render "lesson_chart" %>
 
+<% if current_user.category %>
 <h4>学習中のカテゴリー一覧</h4>
   <% @selected_category.lessons.each do |lesson| %>
     <%= link_to lesson_path(lesson.id) do %>
@@ -22,9 +24,10 @@
       <% end %>
       <%= lesson.rank.name %>
       <%= lesson.name %>
-      <%= lesson.display_time %>
+      <%= detailed_time(lesson.time) %>
     <% end %>
   <% end %>
+<% end %>
 
 <h4>新着レッスン一覧</h4>
   <% @new_lessons.each do |lesson| %>
@@ -34,6 +37,6 @@
       <% end %>
       <%= lesson.rank.name %>
       <%= lesson.name %>
-      <%= lesson.display_time %>
+      <%= detailed_time(lesson.time) %>
     <% end %>
   <% end %>

@@ -22,9 +22,12 @@ class Admins::RanksController < ApplicationController
   end
 
   def update
-    rank = Rank.find(params[:id])
-    rank.update(rank_params)
-    redirect_to admins_ranks_path
+    @rank = Rank.find(params[:id])
+    if @rank.update(rank_params)
+      redirect_to admins_ranks_path
+    else
+      render 'show'
+    end
   end
 
   def destroy

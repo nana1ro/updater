@@ -4,6 +4,20 @@
 
 <%= render "mypage_tab" %>
 
+<div class="chart-container">
+  <canvas id="timeChart" width="300" height="200"></canvas>
+  <%= render 'target_time_form', user: @user %>
+</div>
+
+<%= render "time_chart" %>
+
+<div class="chart-container">
+  <canvas id="historyChart" width="300" height="200"></canvas>
+</div>
+
+<%= render "recent_time_chart" %>
+
+<% if current_user.category %>
 <h4>学習中のカテゴリーの履歴</h4>
 
   <%= @selected_category.name %>
@@ -20,6 +34,7 @@
         <%= "未視聴" %>
       <% end %>
   <% end %>
+
 <br>
 <h4>その他のカテゴリーの履歴</h4>
 
@@ -38,5 +53,18 @@
           <%= "未視聴" %>
         <% end %>
     <% end %>
-<br>
   <% end %>
+
+<% else %>
+
+  <% @categories.each do |category| %>
+    <%= category.name %>
+
+    <% category.lessons.each do |lesson| %>
+          <%= "⚪️" %>
+          <%= link_to lesson.name, lesson_path(lesson.id) %>
+          <%= "未視聴" %>
+    <% end %>
+  <% end %>
+
+<% end %>

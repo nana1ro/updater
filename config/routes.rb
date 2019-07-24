@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:show, :edit, :update] do
       get 'history', on: :member
+      post 'target_time', on: :member
       get 'top', on: :collection
     end
 
