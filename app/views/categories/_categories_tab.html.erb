@@ -2,4 +2,11 @@
 
 <% @categories.each do |category| %>
   <%= link_to category.name, category_path(category.id) %>
+    <% if user_signed_in? %>
+      <% if category.id == current_user.category_id %>
+        <button>このカテゴリーを選択中</button>
+      <% else %>
+        <%= button_to "このカリキュラムに変更", change_category_user_path(current_user.id, category_id: category.id) %>
+      <% end %>
+    <% end %>
 <% end %>

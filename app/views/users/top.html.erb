@@ -15,8 +15,9 @@
 </div>
 <%= render "lesson_chart" %>
 
-<% if current_user.category %>
+
 <h4>学習中のカテゴリー一覧</h4>
+<% if current_user.category %>
   <% @selected_category.lessons.each do |lesson| %>
     <%= link_to lesson_path(lesson.id) do %>
       <% if lesson.image? %>
@@ -27,6 +28,9 @@
       <%= detailed_time(lesson.time) %>
     <% end %>
   <% end %>
+<% else %>
+  <h4>現在選択中のカテゴリーはありません</h4>
+  <% link_to "カテゴリー選択を選択する", categories_path %>
 <% end %>
 
 <h4>新着レッスン一覧</h4>
