@@ -1,3 +1,19 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chart-container{
+	text-align: right;
+}
+
+#timeChart{
+	margin: 0 auto;
+}
+
+.bx-wrapper .bx-prev {
+  left: -60px;
+}
+
+.bx-wrapper .bx-next {
+  right: -60px;
+}

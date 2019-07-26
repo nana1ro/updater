@@ -1,22 +1,36 @@
 <% @page_title = "管理者/トップページ" %>
 
-<h2>管理者トップページ</h2>
+<h1 class="headline">管理者トップページ</h1>
 
-<h4>レッスンの受講回数ランキング</h4>
-<% @lesson_ranking.each do |lesson| %>
-  <% attend = Attend.where(lesson_id: lesson.id) %>
-    <%= lesson.name %>
-    <%= attend.count %>
-<% end %>
+<div class="row">
+  <div class="info-container col-sm-6">
+    <h3>全登録ユーザー数</h3>
+    <%= @number_of_users %>
+  </div>
+  <div class="info-container col-sm-6">
+    <h3>1週間以内に登録したユーザー数</h3>
+    <%= @recent_number_of_users %>
+  </div>
+</div>
 
-<h4>全登録ユーザー数</h4>
-<%= @number_of_users %>
+<div class="row">
+  <div class="info-container col-sm-6">
+    <h3>レッスンの受講された全回数</h3>
+    <%= @number_of_attends %>
+  </div>
+  <div class="info-container col-sm-6">
+    <h3>1週間以内に受講された回数</h3>
+    <%= @recent_number_of_attends %>
+  </div>
+</div>
 
-<h4>1週間以内に登録したユーザー数</h4>
-<%= @recent_number_of_users %>
-
-<h4>レッスンの受講された全回数</h4>
-<%= @number_of_attends %>
-
-<h4>1週間以内に受講された回数</h4>
-<%= @recent_number_of_attends %>
+<div class="row">
+  <div class="ranking-container col-sm-12">
+    <h3>レッスンの受講回数ランキング</h3>
+    <% @lesson_ranking.each do |lesson| %>
+      <% attend = Attend.where(lesson_id: lesson.id) %>
+      <%= lesson.name %>
+      <%= attend.count %>
+    <% end %>
+  </div>
+</div>

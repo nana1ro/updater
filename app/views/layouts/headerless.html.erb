@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,15 +12,10 @@
   </head>
 
   <body>
-    <div id="container">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      <main>
+    <main>
+      <div class="container">
         <%= yield %>
-      </main>
-      <footer>
-        <%= render "shared/footer" %>
-      </footer>
-    </div>
+      </div>
+    </main>
   </body>
 </html>

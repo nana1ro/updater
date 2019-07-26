@@ -1,36 +1,33 @@
 <% @page_title = "管理者/ユーザー詳細ページ" %>
 
-<h2>ユーザー詳細ページ</h2>
+<h1 class="headline">ユーザー詳細ページ</h1>
 
-<%= @user.fullname %>
-<%= @user.fullname_kana %>
-<%= @user.email %>
-<%= @user.category.name %>
-<%= @user.lesson.name %>
-<%= button_to "強制退会", admins_user_path, method: :delete %>
+<div class="row">
+  <div class="col-sm-4">
+    <%= @user.fullname %>
+    <%= @user.fullname_kana %>
+    <%= @user.email %>
+    <% if @user.category %>
+      <%= @user.category.name %>
+    <% end %>
+    <%= button_to "強制退会", admins_user_path, method: :delete %>
+  </div>
 
-<h2>カテゴリーごとの履歴</h2>
-
-<% @categories.each do |category| %>
-
-  <%= category.name %>
-
-  <% category.lessons.each do |lesson| %>
-
-  <% attended_lesson = Attend.find_by(user_id: @user.id, lesson_id: lesson.id) %>
-
-  <% if attended_lesson %>
-    <%= "⚫️" %>
-    <%= link_to lesson.name, admins_lesson_path(lesson.id) %>
-    <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
-  <% else %>
-  	<%= "⚪️" %>
-    <<%= link_to lesson.name, admins_lesson_path(lesson.id) %>
-    <%= "未視聴" %>
-  <% end %>
-
-  <% end %>
-
+  <div class="col-sm-8">
+    <h3>カテゴリーごとの履歴</h3>
+    <% @categories.each do |category| %>
+      <%= category.name %>
+      <% category.lessons.each do |lesson| %>
+        <% attended_lesson = Attend.find_by(user_id: @user.id, lesson_id: lesson.id) %>
+        <% if attended_lesson %>
+          <%= "⚫️" %>
+          <%= link_to lesson.name, admins_lesson_path(lesson.id) %>
+          <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+        <% else %>
+  	      <%= "⚪️" %>
+          <<%= link_to lesson.name, admins_lesson_path(lesson.id) %>
+        <%= "未視聴" %>
+        <% end %>
+      <% end %>
 <br>
-
-<% end %>
+    <% end %>

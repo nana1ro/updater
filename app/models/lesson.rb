@@ -19,7 +19,7 @@ class Lesson < ApplicationRecord
 
 
   def self.create_ranking
-  	Lesson.find(Attend.group(:lesson_id).order('count(lesson_id) desc').limit(3).pluck(:lesson_id))
+  	Lesson.find(Attend.group(:lesson_id).order('count(lesson_id) desc').limit(10).pluck(:lesson_id))
   end
 
 end

@@ -1,18 +1,23 @@
 <% @page_title = "管理者/カテゴリー詳細ページ" %>
 
-<h2>カテゴリー編集</h2>
+<h1 class="headline">カテゴリー編集ページ</h1>
 
-<%= render "category_form" %>
+<div class="row">
+  <div class="col-sm-4">
+    <%= render "category_form" %>
+    <%= button_to "削除", admins_category_path, method: :delete %>
+  </div>
 
-<%= button_to "削除", admins_category_path, method: :delete %>
-
-<% @category.lessons.each do |lesson| %>
-  <%= link_to admins_lesson_path(lesson.id) do %>
-	<% if lesson.image? %>
-      <%= image_tag lesson.image.url, width: 300, heith: 200 %>
-    <% end %>
-	<%= lesson.rank.name %>
-	<%= lesson.name %>
-	<%= detailed_time(lesson.time) %>
-  <% end %>
-<% end %>
+  <div class="col-sm-8">
+    <% @category.lessons.each do |lesson| %>
+      <%= link_to admins_lesson_path(lesson.id) do %>
+	    <% if lesson.image? %>
+          <%= image_tag lesson.image.url, width: 300, heith: 200 %>
+        <% end %>
+		<%= lesson.rank.name %>
+		<%= lesson.name %>
+		<%= detailed_time(lesson.time) %>
+  	  <% end %>
+	<% end %>
+  </div>
+</div>

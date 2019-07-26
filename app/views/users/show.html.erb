@@ -1,9 +1,14 @@
 <% @page_title = "ユーザーマイページ" %>
 
-<h2>ユーザーマイページ</h2>
+<h1 class="headline">マイページ</h2>
 
-<%= render "mypage_tab" %>
+<div class="row">
+  <div class="col-sm-3">
+    <%= render "mypage_tab" %>
+  </div>
 
-<h4>プロフィール設定</h4>
-
-<%= render "mypage_form" %>
+  <div class="col-sm-9">
+    <h3>プロフィール設定</h3>
+    <%= render "mypage_form" %>
+  </div>
+</div>

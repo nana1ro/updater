@@ -1,70 +1,74 @@
 <% @page_title = "学習履歴ページ" %>
 
-<h2>学習履歴ページ</h2>
+<h1 class="headline">マイページ</h1>
 
-<%= render "mypage_tab" %>
+<div class="row">
+  <div class="col-sm-3">
+    <%= render "mypage_tab" %>
+  </div>
+  <div class="col-sm-9">
+    <h3>学習時間の履歴</h3>
+    <div class="row">
+      <div class="chart-container col-sm-6">
+        <canvas id="timeChart" width="300" height="200"></canvas>
+        <%= render "time_chart" %>
+        <%= render 'target_time_form', user: @user %>
+      </div>
 
-<div class="chart-container">
-  <canvas id="timeChart" width="300" height="200"></canvas>
-  <%= render 'target_time_form', user: @user %>
-</div>
+      <div class="chart-container col-sm-6">
+        <canvas id="historyChart" width="300" height="200"></canvas>
+        <%= render "recent_time_chart" %>
+      </div>
+    </div>
 
-<%= render "time_chart" %>
-
-<div class="chart-container">
-  <canvas id="historyChart" width="300" height="200"></canvas>
-</div>
-
-<%= render "recent_time_chart" %>
-
-<% if current_user.category %>
-<h4>学習中のカテゴリーの履歴</h4>
-
-  <%= @selected_category.name %>
-
-  <% @selected_category.lessons.each do |lesson| %>
-    <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
-      <% if attended_lesson %>
-  	    <%= "⚫️" %>
-        <%= link_to lesson.name, lesson_path(lesson.id) %>
-        <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
-      <% else %>
-  	    <%= "⚪️" %>
-        <%= link_to lesson.name, lesson_path(lesson.id) %>
-        <%= "未視聴" %>
-      <% end %>
-  <% end %>
-
+    <div class="row">
+      <div class="history-container col-sm-12">
+        <h3>学習カテゴリーの履歴</h3>
+        <% if current_user.category %>
+          <h5>学習中のカテゴリー</h5>
+          <%= @selected_category.name %>
+          <% @selected_category.lessons.each do |lesson| %>
+            <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
+            <% if attended_lesson %>
+  	          <%= "⚫️" %>
+              <%= link_to lesson.name, lesson_path(lesson.id) %>
+              <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+            <% else %>
+  	          <%= "⚪️" %>
+              <%= link_to lesson.name, lesson_path(lesson.id) %>
+              <%= "未視聴" %>
+            <% end %>
+          <% end %>
+      </div>
 <br>
-<h4>その他のカテゴリーの履歴</h4>
-
-  <% @unselected_categories.each do |category| %>
-    <%= category.name %>
-
-    <% category.lessons.each do |lesson| %>
-      <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
-        <% if attended_lesson %>
-          <%= "⚫️" %>
-          <%= link_to lesson.name, lesson_path(lesson.id) %>
-          <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+      <div class="history-container col-sm-12">
+          <% @unselected_categories.each do |category| %>
+            <%= category.name %>
+            <% category.lessons.each do |lesson| %>
+              <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
+              <% if attended_lesson %>
+                <%= "⚫️" %>
+                <%= link_to lesson.name, lesson_path(lesson.id) %>
+                <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+              <% else %>
+  	            <%= "⚪️" %>
+                <%= link_to lesson.name, lesson_path(lesson.id) %>
+                <%= "未視聴" %>
+              <% end %>
+            <% end %>
+          <% end %>
+      </div>
         <% else %>
-  	      <%= "⚪️" %>
-          <%= link_to lesson.name, lesson_path(lesson.id) %>
-          <%= "未視聴" %>
+      <div class="history-container col-sm-12">
+          <% @categories.each do |category| %>
+            <%= category.name %>
+            <% category.lessons.each do |lesson| %>
+              <%= "⚪️" %>
+              <%= link_to lesson.name, lesson_path(lesson.id) %>
+              <%= "未視聴" %>
+            <% end %>
+          <% end %>
+      </div>
         <% end %>
-    <% end %>
-  <% end %>
-
-<% else %>
-
-  <% @categories.each do |category| %>
-    <%= category.name %>
-
-    <% category.lessons.each do |lesson| %>
-          <%= "⚪️" %>
-          <%= link_to lesson.name, lesson_path(lesson.id) %>
-          <%= "未視聴" %>
-    <% end %>
-  <% end %>
-
-<% end %>
+  </div>
+</div>

@@ -1,9 +1,12 @@
 <% @page_title = "管理者/ユーザーページ" %>
 
-<h2>ユーザー一覧ページ</h2>
+<h1 class="headline">ユーザー一覧ページ</h1>
 
-<% @users.each do |user| %>
-  <%= link_to user.fullname, admins_user_path(user.id) %>
-  <%= user.created_at.to_date.strftime("%Y/%m/%d") %>
-<% end %>
-
+<div class="row">
+  <div class="col-sm-12">
+    <% @users.each do |user| %>
+      <%= link_to user.fullname, admins_user_path(user.id) %>
+      <%= user.created_at.to_date.strftime("%Y/%m/%d") %>
+    <% end %>
+  </div>
+</div>

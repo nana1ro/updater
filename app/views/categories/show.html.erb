@@ -1,16 +1,20 @@
 <% @page_title = "レッスン一覧" %>
 
-<h2>カテゴリー別レッスン一覧</h2>
+<div class="row">
+  <div class="col-sm-3">
+    <%= render "categories_tab" %>
+  </div>
 
-<%= render "categories_tab" %>
-
-<% @category.lessons.each do |lesson| %>
-  <%= link_to lesson_path(lesson.id) do %>
-	<% if lesson.image? %>
-      <%= image_tag lesson.image.url, width: 300, heith: 200 %>
+  <div class="col-sm-9">
+	<% @category.lessons.each do |lesson| %>
+  	  <%= link_to lesson_path(lesson.id) do %>
+		<% if lesson.image? %>
+          <%= image_tag lesson.image.url, width: 300, heith: 200 %>
+        <% end %>
+	  <%= lesson.rank.name %>
+	  <%= lesson.name %>
+	  <%= detailed_time(lesson.time) %>
+      <% end %>
     <% end %>
-	<%= lesson.rank.name %>
-	<%= lesson.name %>
-	<%= detailed_time(lesson.time) %>
-  <% end %>
-<% end %>
+  </div>
+</div>

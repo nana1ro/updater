@@ -1,33 +1,37 @@
-<nav class="menubar">
-  <ul>
-    <span>#ロゴ#</span>
+<div class="navbar navbar-default">
+  <nav class="navbar-nav navbar-left">
+    <span class="logo"><%= image_tag "logo.png" %></span>
+  </nav>
 
     <%= search_form_for @search, url: search_lessons_path do |f| %>
       <%= f.text_field :name_or_description_or_rank_name_cont, placeholder: "キーワードで検索", size: "30*30", required: true %>
-      <%= f.submit "検索" %>
+      <%= f.submit "検索", class:"btn btn-primary" %>
     <% end %>
 
+
+  <nav class="navbar-nav navbar-right">
+    <ul>
   	<% if admin_signed_in? %>
-  	  <%= link_to "Lesson", admins_lessons_path %>
-      <%= link_to "Category", admins_categories_path %>
-      <%= link_to "Rank", admins_ranks_path %>
-  	  <%= link_to "Users", admins_users_path %>
-  	  <%= link_to "Logout", destroy_admin_session_path, method: :delete %>
+  	  <li class="nav-item"><%= link_to "Lesson", admins_lessons_path %></li>
+      <li class="nav-item"><%= link_to "Category", admins_categories_path %></li>
+      <li class="nav-item"><%= link_to "Rank", admins_ranks_path %></li>
+  	  <li class="nav-item"><%= link_to "Users", admins_users_path %></li>
+  	  <li class="nav-item"><%= link_to "Logout", destroy_admin_session_path, method: :delete %></li>
 
     <% elsif user_signed_in? %>
-      <%= link_to "TopPage", top_users_path %>
-  	  <%= link_to "MyPage", user_path(current_user.id) %>
-  	  <%= link_to "Lessons", categories_path %>
-  	  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <li class="nav-item"><%= link_to "TopPage", top_users_path %></li>
+  	  <li class="nav-item"><%= link_to "MyPage", user_path(current_user.id) %></li>
+  	  <li class="nav-item"><%= link_to "Lessons", categories_path %></li>
+  	  <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 
     <% else %>
-  	  <%= link_to "Top", root_path %>
-  	  <%= link_to "About", about_path %>
-  	  <%= link_to "Lessons", categories_path %>
-  	  <%= link_to "LogIn", new_user_session_path %>
-  	  <%= link_to "SignUp", new_user_registration_path %>
+  	  <li class="nav-item"><%= link_to "Top", root_path %></li>
+  	  <li class="nav-item"><%= link_to "About", about_path %></li>
+  	  <li class="nav-item"><%= link_to "Lessons", categories_path %></li>
+  	  <li class="nav-item"><%= link_to "LogIn", new_user_session_path %></li>
+  	  <li class="nav-item"><%= link_to "SignUp", new_user_registration_path %></li>
 
     <% end %>
-
-  </ul>
-</nav>
+    </ul>
+  </nav>
+</div>
