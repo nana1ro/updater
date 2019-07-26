@@ -1,11 +1,13 @@
 <% @page_title = "管理者/カテゴリーページ" %>
 
-<h2>ランク追加</h2>
+<h1 class="headline">ランク追加ページ</h1>
 
-<%= render "rank_form" %>
-
-<h2>ランク一覧</h2>
-
-<% @ranks.each do |rank| %>
-  <%= link_to rank.name, admins_rank_path(rank.id) %>
-<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <%= render "rank_form" %>
+    <h3>ランク一覧</h3>
+    <% @ranks.each do |rank| %>
+      <%= link_to rank.name, admins_rank_path(rank.id) %>
+    <% end %>
+  </div>
+</div>

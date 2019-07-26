@@ -1,15 +1,16 @@
 <% @page_title = "管理者/レッスン詳細ページ" %>
 
-<h2>レッスン詳細ページ</h2>
+<h1 class="headline">レッスン詳細ページ</h1>
 
-<%= @lesson.rank.name %>
-<%= @lesson.name %>
-<%= detailed_time(@lesson.time) %>
-
-<% if @lesson.image? %>
-  <%= image_tag @lesson.image.url, width: 300, heith: 200 %>
-<% end %>
-
-<%= @lesson.description %>
-
-<%= link_to "編集ページへ", edit_admins_lesson_path %>
+<div class="row">
+  <div class="col-sm-12">
+    <%= @lesson.rank.name %>
+    <%= @lesson.name %>
+    <%= detailed_time(@lesson.time) %>
+    <% if @lesson.image? %>
+      <%= image_tag @lesson.image.url, width: 300, heith: 200 %>
+    <% end %>
+    <%= @lesson.description %>
+    <%= link_to "編集ページへ", edit_admins_lesson_path %>
+  </div>
+</div>

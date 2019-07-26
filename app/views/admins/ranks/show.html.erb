@@ -1,19 +1,23 @@
 <% @page_title = "管理者/ランク詳細ページ" %>
 
-<h2>ランク編集</h2>
+<h1 class="headline">ランク編集ページ</h1>
 
-<%= render "rank_form" %>
+<div class="row">
+  <div class="col-sm-4">
+    <%= render "rank_form" %>
+    <%= button_to "削除", admins_rank_path, method: :delete %>
+  </div>
 
-<%= button_to "削除", admins_rank_path, method: :delete %>
-
-<% @rank.lessons.each do |lesson| %>
-  <%= link_to admins_lesson_path(lesson.id) do %>
-	<% if lesson.image? %>
-      <%= image_tag lesson.image.url, width: 300, heith: 200 %>
+  <div class="col-sm-8">
+    <% @rank.lessons.each do |lesson| %>
+      <%= link_to admins_lesson_path(lesson.id) do %>
+	    <% if lesson.image? %>
+          <%= image_tag lesson.image.url, width: 300, heith: 200 %>
+        <% end %>
+	  <%= lesson.rank.name %>
+	  <%= lesson.name %>
+	  <%= detailed_time(lesson.time) %>
+      <% end %>
     <% end %>
-	<%= lesson.rank.name %>
-	<%= lesson.name %>
-	<%= detailed_time(lesson.time) %>
-  <% end %>
-<% end %>
-
+  </div>
+</div>

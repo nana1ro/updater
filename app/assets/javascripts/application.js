@@ -15,5 +15,22 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery
-//= require jquery_ujs
 //= require Chart.min
+//= require bootstrap-sprockets
+//= require bxslider
+
+$(function(){
+   $('.bxslider').bxSlider({
+    	auto: true,
+		speed: 2000,
+		moveSlide: 1,
+		pause: 4000,
+		infiniteLoop: true,
+		minSlides: 4,
+		maxSlides: 4,
+		moveSlides: 1,
+		slideWidth: 200,
+		autoHover: true,
+		touchEnabled: false
+  });
+});

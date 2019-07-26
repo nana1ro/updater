@@ -1,7 +1,14 @@
 <% @page_title = "このサイトについて" %>
 
-<h2>このサイトについて</h2>
+<h1 class="headline">このサイトについて</h1>
 
-<%= link_to "レッスン一覧へ", categories_path %>
-<%= link_to "ログインページへ", new_user_session_path %>
-<%= link_to "新規登録ページへ", new_user_registration_path %>
+<div class="row">
+  <div class="about-container col-sm-9">
+  	<h3>texttexttext</h3>
+  </div>
+  <div class="col-sm-3">
+    <%= link_to "レッスン一覧へ", categories_path %>
+    <%= link_to "ログインページへ", new_user_session_path %>
+    <%= link_to "新規登録ページへ", new_user_registration_path %>
+  </div>
+</div>

@@ -1,46 +1,62 @@
 <% @page_title = "ユーザートップページ" %>
 
-<h2>ユーザートップページ</h2>
+<div class="row">
+  <div class="chart-container col-sm-6">
+    <canvas id="timeChart" width="300" height="240"></canvas>
+    <%= render "time_chart" %>
+    <!-- TODO: 下記、canvas内に書き込む予定 -->
+    <p class="chart-item"><%= "目標：#{rough_time(current_user.target_time)}" %></p>
+    <p class="chart-item"><%= "実績：#{rough_time(@learning_time)}" %></p>
+    <p class="chart-item"><%= "達成率：　　#{number_to_percentage(@learning_time / current_user.target_time.to_f * 100, precision: 0)}" %></p>
+  </div>
 
-<div class="chart-container">
-  <canvas id="timeChart" width="300" height="200"></canvas>
-  <%= "目標：#{rough_time(current_user.target_time)}" %>
-  <%= "実績：#{rough_time(@learning_time)}" %>
-  <%= "達成率：#{number_to_percentage(@learning_time / current_user.target_time.to_f * 100, precision: 0)}" %>
+  <div class="chart-container col-sm-6">
+    <canvas id="lessonChart" width="400" height="300"></canvas>
+    <%= render "lesson_chart" %>
+  </div>
 </div>
-<%= render "time_chart" %>
 
-<div class="chart-container">
-  <canvas id="lessonChart" width="400" height="300"></canvas>
+<div class="row">
+  <div class="col-sm-12">
+    <h3>学習中のカテゴリー一覧</h3>
+    <% if current_user.category %>
+      <ul class="bxslider">
+        <% @selected_category.lessons.each do |lesson| %>
+          <li class="slide-item">
+          <%= link_to lesson_path(lesson.id) do %>
+            <% if lesson.image? %>
+              <%= image_tag lesson.image.url, width: 200, heith: 130 %>
+            <% end %>
+            <%= lesson.rank.name %>
+            <%= lesson.name %>
+            <%= detailed_time(lesson.time) %>
+          <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h3>現在選択中のカテゴリーはありません</h3>
+      <% link_to "カテゴリー選択を選択する", categories_path %>
+    <% end %>
+  </div>
 </div>
-<%= render "lesson_chart" %>
 
-
-<h4>学習中のカテゴリー一覧</h4>
-<% if current_user.category %>
-  <% @selected_category.lessons.each do |lesson| %>
-    <%= link_to lesson_path(lesson.id) do %>
-      <% if lesson.image? %>
-        <%= image_tag lesson.image.url, width: 200, heith: 130 %>
+<div class="row">
+  <div class="col-sm-12">
+    <h3>新着レッスン一覧</h3>
+    <ul class="bxslider">
+      <% @new_lessons.each do |lesson| %>
+        <li class="slide-item">
+        <%= link_to lesson_path(lesson.id) do %>
+          <% if lesson.image? %>
+            <span class="lesson-image"><%= image_tag lesson.image.url, width: 200, heith: 130 %></span>
+          <% end %>
+          <span class="a-label -yellow"><%= lesson.rank.name %></span>
+          <%= lesson.name %>
+          <%= detailed_time(lesson.time) %>
+        <% end %>
+        </li>
       <% end %>
-      <%= lesson.rank.name %>
-      <%= lesson.name %>
-      <%= detailed_time(lesson.time) %>
-    <% end %>
-  <% end %>
-<% else %>
-  <h4>現在選択中のカテゴリーはありません</h4>
-  <% link_to "カテゴリー選択を選択する", categories_path %>
-<% end %>
-
-<h4>新着レッスン一覧</h4>
-  <% @new_lessons.each do |lesson| %>
-    <%= link_to lesson_path(lesson.id) do %>
-      <% if lesson.image? %>
-        <%= image_tag lesson.image.url, width: 200, heith: 130 %>
-      <% end %>
-      <%= lesson.rank.name %>
-      <%= lesson.name %>
-      <%= detailed_time(lesson.time) %>
-    <% end %>
-  <% end %>
+    </ul>
+  </div>
+</div>

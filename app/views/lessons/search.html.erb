@@ -1,18 +1,21 @@
 <% @page_title = "検索結果ページ" %>
 
-<h2>検索結果ページ</h2>
+<div class="row">
+  <h3>検索結果</h3>
+  <div class="col-sm-12">
+    <% @search_lessons.each do |lesson| %>
+      <%= link_to lesson_path(lesson.id) do %>
+	    <% if lesson.image? %>
+          <%= image_tag lesson.image.url, width: 300, heith: 200 %>
+        <% end %>
+	    <%= lesson.rank.name %>
+	    <%= lesson.name %>
+	    <%= detailed_time(lesson.time) %>
+      <% end %>
+    <% end %>
 
-<% @search_lessons.each do |lesson| %>
-  <%= link_to lesson_path(lesson.id) do %>
-	<% if lesson.image? %>
-    <%= image_tag lesson.image.url, width: 300, heith: 200 %>
-  <% end %>
-	<%= lesson.rank.name %>
-	<%= lesson.name %>
-	<%= detailed_time(lesson.time) %>
-  <% end %>
-<% end %>
-
-<% if @search_lessons.blank? %>
-  <%= "該当するレッスンはありませんでした" %>
-<% end %>
+    <% if @search_lessons.blank? %>
+      <%= "該当するレッスンはありませんでした" %>
+    <% end %>
+  </div>
+</div>

@@ -1,11 +1,13 @@
 <% @page_title = "管理者/カテゴリーページ" %>
 
-<h2>カテゴリー追加</h2>
+<h1 class="headline">カテゴリー追加ページ</h1>
 
-<%= render "category_form" %>
-
-<h2>カテゴリー一覧</h2>
-
-<% @categories.each do |category| %>
-  <%= link_to category.name, admins_category_path(category.id) %>
-<% end %>
+<div class="row">
+  <div class="col-sm-12">
+    <%= render "category_form" %>
+    <h3>カテゴリー一覧</h3>
+    <% @categories.each do |category| %>
+      <%= link_to category.name, admins_category_path(category.id) %>
+    <% end %>
+  </div>
+</div>
