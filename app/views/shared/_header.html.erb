@@ -1,37 +1,107 @@
-<div class="navbar navbar-default">
-  <nav class="navbar-nav navbar-left">
-    <span class="logo"><%= image_tag "logo.png" %></span>
-  </nav>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <span class="navbar-brand"><%= image_tag "logo.png", size: "250x50"%></span>
+    </div>
 
-    <%= search_form_for @search, url: search_lessons_path do |f| %>
-      <%= f.text_field :name_or_description_or_rank_name_cont, placeholder: "キーワードで検索", size: "30*30", required: true %>
-      <%= f.submit "検索", class:"btn btn-primary" %>
-    <% end %>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= search_form_for @search, url: search_lessons_path, html: {class:"navbar-form search-box"} do |f| %>
+          <%= f.text_field :name_or_description_or_rank_name_cont, placeholder: "キーワードでレッスンを検索", required: true, size: "30",class:"form-control" %>
+          <%= f.submit "検索", class:"btn btn-primary" %>
+        <% end %>
+      </li>
 
+  	  <% if admin_signed_in? %>
+  	    <li class="nav-item">
+          <%= link_to admins_lessons_path do %>
+            <span class="glyphicon glyphicon-book"></span>
+            <span>Lesson</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admins_categories_path do %>
+            <span class="glyphicon glyphicon-list"></span>
+            <span>Category</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admins_ranks_path do %>
+            <span class="glyphicon glyphicon-tags"></span>
+            <span>Rank</span>
+          <% end %>
+        </li>
+  	    <li class="nav-item">
+          <%= link_to admins_users_path do %>
+            <span class="glyphicon glyphicon-user"></span>
+            <span>User</span>
+          <% end %>
+        </li>
+  	    <li class="nav-item">
+          <%= link_to destroy_admin_session_path, method: :delete do %>
+            <span class="glyphicon glyphicon-log-out"></span>
+            <span>Logout</span>
+          <% end %>
+        </li>
 
-  <nav class="navbar-nav navbar-right">
-    <ul>
-  	<% if admin_signed_in? %>
-  	  <li class="nav-item"><%= link_to "Lesson", admins_lessons_path %></li>
-      <li class="nav-item"><%= link_to "Category", admins_categories_path %></li>
-      <li class="nav-item"><%= link_to "Rank", admins_ranks_path %></li>
-  	  <li class="nav-item"><%= link_to "Users", admins_users_path %></li>
-  	  <li class="nav-item"><%= link_to "Logout", destroy_admin_session_path, method: :delete %></li>
+      <% elsif user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to top_users_path do %>
+            <span class="glyphicon glyphicon-home"></span>
+            <span>TopPage</span>
+          <% end %>
+        </li>
+  	    <li class="nav-item">
+          <%= link_to user_path(current_user.id) do %>
+            <span class="glyphicon glyphicon-user"></span>
+            <span>MyPage</span>
+          <% end %>
+        </li>
+  	    <li class="nav-item">
+          <%= link_to categories_path do %>
+            <span class="glyphicon glyphicon-book"></span>
+            <span>Lesson</span>
+          <% end %>
+        </li>
+  	    <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <span class="glyphicon glyphicon-log-out"></span>
+            <span>Logout</span>
+          <% end %>
+        </li>
 
-    <% elsif user_signed_in? %>
-      <li class="nav-item"><%= link_to "TopPage", top_users_path %></li>
-  	  <li class="nav-item"><%= link_to "MyPage", user_path(current_user.id) %></li>
-  	  <li class="nav-item"><%= link_to "Lessons", categories_path %></li>
-  	  <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-
-    <% else %>
-  	  <li class="nav-item"><%= link_to "Top", root_path %></li>
-  	  <li class="nav-item"><%= link_to "About", about_path %></li>
-  	  <li class="nav-item"><%= link_to "Lessons", categories_path %></li>
-  	  <li class="nav-item"><%= link_to "LogIn", new_user_session_path %></li>
-  	  <li class="nav-item"><%= link_to "SignUp", new_user_registration_path %></li>
-
-    <% end %>
+      <% else %>
+  	    <li class="nav-item">
+          <%= link_to root_path do %>
+            <span class="glyphicon glyphicon-home"></span>
+            <span>TopPage</span>
+          <% end %>
+        </li>
+  	    <li class="nav-item">
+          <%= link_to about_path do %>
+            <span class="glyphicon glyphicon-hand-up"></span>
+            <span>About</span>
+          <% end %>
+        </li>
+  	    <li class="nav-item">
+          <%= link_to categories_path do %>
+            <span class="glyphicon glyphicon-book"></span>
+            <span>Lesson</span>
+          <% end %>
+        </li>
+  	    <li class="nav-item">
+          <%= link_to new_user_session_path do %>
+            <span class="glyphicon glyphicon-log-in"></span>
+            <span>Login</span>
+          <% end %>
+        </li>
+  	    <li class="nav-item">
+          <%= link_to new_user_registration_path do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span>Signup</span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
-  </nav>
-</div>
+  </div>
+</nav>

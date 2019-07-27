@@ -1,7 +1,7 @@
 <% @page_title = "検索結果ページ" %>
 
 <div class="row">
-  <h3>検索結果</h3>
+  <h3 class="page-header">検索結果</h3>
   <div class="col-sm-12">
     <% @search_lessons.each do |lesson| %>
       <%= link_to lesson_path(lesson.id) do %>
