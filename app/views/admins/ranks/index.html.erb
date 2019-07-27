@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-sm-12">
     <%= render "rank_form" %>
-    <h3>ランク一覧</h3>
+    <h3 class="page-header">ランク一覧</h3>
     <% @ranks.each do |rank| %>
       <%= link_to rank.name, admins_rank_path(rank.id) %>
     <% end %>

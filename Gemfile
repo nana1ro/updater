@@ -82,3 +82,5 @@ gem 'rmagick'
 gem 'chart-js-rails'
 
 gem 'rails-i18n'
+
+gem 'bootstrap_form'

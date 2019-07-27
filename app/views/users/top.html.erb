@@ -18,7 +18,7 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <h3>学習中のカテゴリー一覧</h3>
+    <h3 class="page-header">学習中のカテゴリー一覧</h3>
     <% if current_user.category %>
       <ul class="bxslider">
         <% @selected_category.lessons.each do |lesson| %>
@@ -35,7 +35,7 @@
         <% end %>
       </ul>
     <% else %>
-      <h3>現在選択中のカテゴリーはありません</h3>
+      <h5>現在選択中のカテゴリーはありません</h5>
       <% link_to "カテゴリー選択を選択する", categories_path %>
     <% end %>
   </div>
@@ -43,7 +43,7 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <h3>新着レッスン一覧</h3>
+    <h3 class="page-header">新着レッスン一覧</h3>
     <ul class="bxslider">
       <% @new_lessons.each do |lesson| %>
         <li class="slide-item">
