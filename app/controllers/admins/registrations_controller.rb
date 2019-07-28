@@ -60,7 +60,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-　def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(resource)
     admins_root_path
   end
 

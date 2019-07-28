@@ -8,7 +8,7 @@
       <li>
         <%= search_form_for @search, url: search_lessons_path, html: {class:"navbar-form search-box"} do |f| %>
           <%= f.text_field :name_or_description_or_rank_name_cont, placeholder: "キーワードでレッスンを検索", required: true, size: "30",class:"form-control" %>
-          <%= f.submit "検索", class:"btn btn-primary" %>
+          <%= f.submit "検索", class:"btn btn-info" %>
         <% end %>
       </li>
 
@@ -46,7 +46,7 @@
 
       <% elsif user_signed_in? %>
         <li class="nav-item">
-          <%= link_to top_users_path do %>
+          <%= link_to top_users_path, data: {"turbolinks" => false} do %>
             <span class="glyphicon glyphicon-home"></span>
             <span>TopPage</span>
           <% end %>

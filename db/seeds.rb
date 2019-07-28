@@ -72,23 +72,23 @@ end
   Attend.create(user_id:'1', category_id:'1', lesson_id:"#{n}", time:'1800', created_at:"#{n.day.ago}")
 end
 1.upto(6) do |n|
-  Attend.create(user_id:'1', category_id:'2', lesson_id:"#{n}", time:'1800', created_at:"#{(7+n).day.ago}")
+  Attend.create(user_id:'1', category_id:'2', lesson_id:"#{10+n}", time:'1800', created_at:"#{(7+n).day.ago}")
 end
 1.upto(3) do |n|
-  Attend.create(user_id:'1', category_id:'3', lesson_id:"#{n}", time:'1800', created_at:"#{n.day.ago}")
+  Attend.create(user_id:'1', category_id:'3', lesson_id:"#{20+n}", time:'1800', created_at:"#{n.day.ago}")
 end
 1.upto(4) do |n|
-  Attend.create(user_id:'1', category_id:'4', lesson_id:"#{n}", time:'1800', created_at:"#{n.day.ago}")
+  Attend.create(user_id:'1', category_id:'4', lesson_id:"#{30+n}", time:'1800', created_at:"#{n.day.ago}")
 end
 1.upto(3) do |n|
-  Attend.create(user_id:'1', category_id:'5', lesson_id:"#{n}", time:'1800', created_at:"#{(14+n).day.ago}")
+  Attend.create(user_id:'1', category_id:'5', lesson_id:"#{40+n}", time:'1800', created_at:"#{(14+n).day.ago}")
 end
 1.upto(10) do |n|
-  Attend.create(user_id:'1', category_id:'6', lesson_id:"#{n}", time:'1800', created_at:"#{(7+n).day.ago}")
+  Attend.create(user_id:'1', category_id:'6', lesson_id:"#{50+n}", time:'1800', created_at:"#{(7+n).day.ago}")
 end
 1.upto(2) do |n|
-  Attend.create(user_id:'1', category_id:'7', lesson_id:"#{n}", time:'1800', created_at:"#{(14+n).day.ago}")
+  Attend.create(user_id:'1', category_id:'7', lesson_id:"#{60+n}", time:'1800', created_at:"#{(14+n).day.ago}")
 end
 1.upto(6) do |n|
-  Attend.create(user_id:'1', category_id:'8', lesson_id:"#{n}", time:'1800', created_at:"#{(14+n).day.ago}")
+  Attend.create(user_id:'1', category_id:'8', lesson_id:"#{70+n}", time:'1800', created_at:"#{(14+n).day.ago}")
 end
