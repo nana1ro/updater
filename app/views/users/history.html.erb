@@ -12,60 +12,77 @@
       <div class="chart-container col-sm-6">
         <canvas id="timeChart" width="300" height="200"></canvas>
         <%= render "time_chart" %>
-        <%= render 'target_time_form', user: @user %>
+        <!-- TODO: 下記、canvas内に書き込む -->
+        <div class="chartitem-container">
+          <p class="text-muted"><span>達成率：</span><%= number_to_percentage(@learning_time / current_user.target_time.to_f * 100, precision: 0) %></p>
+          <p class="text-muted"><span>実績：</span><%= rough_time(@learning_time) %></p>
+          <p class="text-muted"><%= render 'target_time_form', user: @user %></p>
+        </div>
       </div>
 
       <div class="chart-container col-sm-6">
         <canvas id="historyChart" width="300" height="200"></canvas>
         <%= render "recent_time_chart" %>
+        <div class="chartitem-container">
+          <p class="text-muted"><span>今週：</span><%= rough_time(@learning_time) %></p>
+          <p class="text-muted"><span>1週間前：</span><%= rough_time(@learning_time_before_two_weeks) %></p>
+          <p class="text-muted"><span>2週間前：</span><%= rough_time(@learning_time_before_three_weeks) %></p>
+        </div>
       </div>
     </div>
 
+    <!-- TODO: 下記、ドロップダウンリストにする -->
     <div class="row">
       <div class="history-container col-sm-12">
         <h3 class="page-header">学習カテゴリーの履歴</h3>
         <% if current_user.category %>
           <h5>学習中のカテゴリー</h5>
-          <%= @selected_category.name %>
+          <h5><%= @selected_category.name %></h5>
           <% @selected_category.lessons.each do |lesson| %>
             <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
+            <table class="table table-hover">
             <% if attended_lesson %>
-  	          <%= "⚫️" %>
-              <%= link_to lesson.name, lesson_path(lesson.id) %>
-              <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+  	          <tr><td><span class="glyphicon glyphicon-ok-circle icon" style="color: #0080ff;"></span>
+              <%= link_to lesson.name, lesson_path(lesson.id) %></td>
+              <td class="text-right"><%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %></td></tr>
             <% else %>
-  	          <%= "⚪️" %>
-              <%= link_to lesson.name, lesson_path(lesson.id) %>
-              <%= "未視聴" %>
+  	          <tr><td><span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
+              <%= link_to lesson.name, lesson_path(lesson.id) %></td>
+              <td class="text-right"><%= "未視聴" %></td></tr>
             <% end %>
+            </table>
           <% end %>
       </div>
 <br>
       <div class="history-container col-sm-12">
           <% @unselected_categories.each do |category| %>
-            <%= category.name %>
+            <h5><%= category.name %></h5>
             <% category.lessons.each do |lesson| %>
               <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
+              <table class="table table-hover">
               <% if attended_lesson %>
-                <%= "⚫️" %>
-                <%= link_to lesson.name, lesson_path(lesson.id) %>
-                <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+                <tr><td><span class="glyphicon glyphicon-ok-circle icon" style="color: #0080ff;"></span>
+                <%= link_to lesson.name, lesson_path(lesson.id) %></td>
+                <td class="text-right"><%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %></td></tr>
               <% else %>
-  	            <%= "⚪️" %>
-                <%= link_to lesson.name, lesson_path(lesson.id) %>
-                <%= "未視聴" %>
+                <tr><td><span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
+                <%= link_to lesson.name, lesson_path(lesson.id) %></td>
+                <td class="text-right"><%= "未視聴" %></td></tr>
               <% end %>
+              </table>
             <% end %>
           <% end %>
       </div>
         <% else %>
       <div class="history-container col-sm-12">
           <% @categories.each do |category| %>
-            <%= category.name %>
+            <h5><%= category.name %></h5>
             <% category.lessons.each do |lesson| %>
-              <%= "⚪️" %>
-              <%= link_to lesson.name, lesson_path(lesson.id) %>
-              <%= "未視聴" %>
+              <table class="table table-hover">
+              <tr><td><span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
+              <%= link_to lesson.name, lesson_path(lesson.id) %></td>
+              <td class="text-right"><%= "未視聴" %></td></tr>
+              </table>
             <% end %>
           <% end %>
       </div>

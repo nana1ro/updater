@@ -1,21 +1,17 @@
-<%= form_for @user do |f| %>
+<div class="row">
+  <div class="col-sm-12">
 
-  <%= render 'shared/errors', obj: f.object %>
-  <%= f.label "苗字" %>
-  <%= f.text_field :last_name, value: @user.last_name %>
+    <%= bootstrap_form_for @user do |f| %>
 
-  <%= f.label "名前" %>
-  <%= f.text_field :first_name, value:  @user.first_name %>
+      <%= render 'shared/errors', obj: f.object %>
+      <%= f.text_field :last_name, value: @user.last_name %>
+      <%= f.text_field :first_name, value:  @user.first_name %>
+      <%= f.text_field :last_name_kana, value: @user.last_name_kana %>
+      <%= f.text_field :first_name_kana, value:  @user.first_name_kana %>
+      <%= f.email_field :email, value: @user.email %>
+      <%= f.submit "設定を保存する", class:"btn btn-primary" %>
 
-  <%= f.label "苗字（カナ）" %>
-  <%= f.text_field :last_name_kana, value: @user.last_name_kana %>
+    <% end %>
 
-  <%= f.label "名前（カナ）" %>
-  <%= f.text_field :first_name_kana, value:  @user.first_name_kana %>
-
-  <%= f.label "メールアドレス" %>
-  <%= f.email_field :email, value: @user.email %>
-
-  <%= f.submit "編集" %>
-
-<% end %>
+  </div>
+</div>

@@ -4,7 +4,7 @@
   <div class="chart-container col-sm-6">
     <canvas id="timeChart" width="300" height="240"></canvas>
     <%= render "time_chart" %>
-    <!-- TODO: 下記、canvas内に書き込む予定 -->
+    <!-- TODO: 下記、canvas内に書き込む -->
     <p class="chart-item"><%= "目標：#{rough_time(current_user.target_time)}" %></p>
     <p class="chart-item"><%= "実績：#{rough_time(@learning_time)}" %></p>
     <p class="chart-item"><%= "達成率：　　#{number_to_percentage(@learning_time / current_user.target_time.to_f * 100, precision: 0)}" %></p>
@@ -25,17 +25,24 @@
           <li class="slide-item">
           <%= link_to lesson_path(lesson.id) do %>
             <% if lesson.image? %>
-              <%= image_tag lesson.image.url, width: 200, heith: 130 %>
+              <span class="lesson-image"><%= image_tag lesson.image.url, width: 200, heith: 130 %></span>
             <% end %>
-            <%= lesson.rank.name %>
-            <%= lesson.name %>
-            <%= detailed_time(lesson.time) %>
+            <!-- TODO: 下記、jQueryで書き換える -->
+            <% if lesson.rank_id == 1 %>
+              <span class="label label-info"><%= lesson.rank.name %></span></br>
+            <% elsif lesson.rank_id == 2 %>
+              <span class="label label-success"><%= lesson.rank.name %></span></br>
+            <% else %>
+              <span class="label label-danger"><%= lesson.rank.name %></span></br>
+            <% end %>
+            <%= lesson.name %></br>
+            <%= detailed_time(lesson.time) %></br>
           <% end %>
           </li>
         <% end %>
       </ul>
     <% else %>
-      <h5>現在選択中のカテゴリーはありません</h5>
+      <h3>現在選択中のカテゴリーはありません</h3>
       <% link_to "カテゴリー選択を選択する", categories_path %>
     <% end %>
   </div>
@@ -51,9 +58,16 @@
           <% if lesson.image? %>
             <span class="lesson-image"><%= image_tag lesson.image.url, width: 200, heith: 130 %></span>
           <% end %>
-          <span class="a-label -yellow"><%= lesson.rank.name %></span>
-          <%= lesson.name %>
-          <%= detailed_time(lesson.time) %>
+          <!-- TODO: 下記、jQueryで書き換える -->
+          <% if lesson.rank_id == 1 %>
+            <span class="label label-info"><%= lesson.rank.name %></span></br>
+          <% elsif lesson.rank_id == 2 %>
+            <span class="label label-success"><%= lesson.rank.name %></span></br>
+          <% else %>
+            <span class="label label-danger"><%= lesson.rank.name %></span></br>
+          <% end %>
+          <%= lesson.name %></br>
+          <%= detailed_time(lesson.time) %></br>
         <% end %>
         </li>
       <% end %>
