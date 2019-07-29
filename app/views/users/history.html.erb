@@ -40,7 +40,7 @@
           <h3><%= @selected_category.name %></h3>
           <% @selected_category.lessons.each do |lesson| %>
             <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
-            <table class="table table-hover">
+            <table class="table table-hover table-condensed">
             <% if attended_lesson %>
   	          <tr><td><span class="glyphicon glyphicon-ok-circle icon" style="color: #0080ff;"></span>
               <%= link_to lesson.name, lesson_path(lesson.id) %></td>
@@ -59,7 +59,7 @@
             <h3><%= category.name %></h3>
             <% category.lessons.each do |lesson| %>
               <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
-              <table class="table table-hover">
+              <table class="table table-hover table-condensed">
               <% if attended_lesson %>
                 <tr><td><span class="glyphicon glyphicon-ok-circle icon" style="color: #0080ff;"></span>
                 <%= link_to lesson.name, lesson_path(lesson.id) %></td>
@@ -78,7 +78,7 @@
           <% @categories.each do |category| %>
             <h3><%= category.name %></h3>
             <% category.lessons.each do |lesson| %>
-              <table class="table table-hover">
+              <table class="table table-hover table-condensed">
               <tr><td><span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
               <%= link_to lesson.name, lesson_path(lesson.id) %></td>
               <td class="text-right"><%= "未視聴" %></td></tr>

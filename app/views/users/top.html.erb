@@ -26,6 +26,8 @@
           <%= link_to lesson_path(lesson.id) do %>
             <% if lesson.image? %>
               <span class="lesson-image"><%= image_tag lesson.image.url, width: 200, heith: 130 %></span>
+            <% else %>
+              <span class="lesson-image"><%= image_tag "no_image.png", width: 200, height: 130 %></span>
             <% end %>
             <!-- TODO: 下記、jQueryで書き換える -->
             <% if lesson.rank_id == 1 %>
@@ -57,6 +59,8 @@
         <%= link_to lesson_path(lesson.id) do %>
           <% if lesson.image? %>
             <span class="lesson-image"><%= image_tag lesson.image.url, width: 200, heith: 130 %></span>
+          <% else %>
+            <span class="lesson-image"><%= image_tag "no_image.png", width: 200, height: 130 %></span>
           <% end %>
           <!-- TODO: 下記、jQueryで書き換える -->
           <% if lesson.rank_id == 1 %>

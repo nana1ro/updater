@@ -1,33 +1,39 @@
 <% @page_title = "管理者/ユーザー詳細ページ" %>
 
-<h1 class="headline">ユーザー詳細ページ</h1>
+<h1 class="page-header">ユーザー詳細ページ</h1>
 
 <div class="row">
   <div class="col-sm-4">
-    <%= @user.fullname %>
-    <%= @user.fullname_kana %>
-    <%= @user.email %>
-    <% if @user.category %>
-      <%= @user.category.name %>
-    <% end %>
-    <%= button_to "強制退会", admins_user_path, method: :delete %>
+    <ul class="nav nav-pills nav-stacked">
+      <li class="page-header">名前（漢字）：<%= @user.fullname %></li>
+      <li class="page-header">名前（カナ）：<%= @user.fullname_kana %></li>
+      <li class="page-header">メールアドレス：<%= @user.email %></li>
+      <% if @user.category %>
+        <li class="page-header">カテゴリー：<%= @user.category.name %></li>
+      <% end %>
+      <li><%= button_to "強制退会", admins_user_path, method: :delete, class:"btn btn-danger pull-right" %></li>
+    </ul>
   </div>
 
   <div class="col-sm-8">
-    <h3>カテゴリーごとの履歴</h3>
-    <% @categories.each do |category| %>
-      <%= category.name %>
-      <% category.lessons.each do |lesson| %>
-        <% attended_lesson = Attend.find_by(user_id: @user.id, lesson_id: lesson.id) %>
-        <% if attended_lesson %>
-          <%= "⚫️" %>
-          <%= link_to lesson.name, admins_lesson_path(lesson.id) %>
-          <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
-        <% else %>
-  	      <%= "⚪️" %>
-          <<%= link_to lesson.name, admins_lesson_path(lesson.id) %>
-        <%= "未視聴" %>
+    <h3 class="page-header">カテゴリーごとの履歴</h3>
+      <% @categories.each do |category| %>
+        <h3><%= category.name %></h3>
+        <% category.lessons.each do |lesson| %>
+          <% attended_lesson = Attend.find_by(user_id: @user.id, lesson_id: lesson.id) %>
+          <table class="table table-hover table-condensed">
+            <% if attended_lesson %>
+              <tr><td><span class="glyphicon glyphicon-ok-circle icon" style="color: #0080ff;"></span>
+              <%= link_to lesson.name, lesson_path(lesson.id) %></td>
+              <td class="text-right"><%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %></td></tr>
+            <% else %>
+              <tr><td><span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
+              <%= link_to lesson.name, lesson_path(lesson.id) %></td>
+              <td class="text-right"><%= "未視聴" %></td></tr>
+            <% end %>
+          </table>
         <% end %>
       <% end %>
 <br>
-    <% end %>
+  </div>
+</div>
