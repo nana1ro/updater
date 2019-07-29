@@ -1,16 +1,21 @@
 <% @page_title = "受講スライドページ" %>
 
-<div class="row">
-  <h3 class="page-header"><%= @lesson.name %></h3>
-  <div class="col-sm-12">
-    <% if @lesson.video? %>
-      <%= video_tag @lesson.video.url, controls: true, poster: @lesson.image.url %>
-    <% end %>
-
+<div class="slide-container">
+  <h3 class="page-header"><%= @lesson.name %>
+    <%= link_to "前へ戻る", :back, class:"btn btn-info pull-right slide-item" %>
     <% if Attend.exists?(user_id: current_user.id, lesson_id: @lesson.id) %>
-      <%= link_to "レッスン一覧へ", categories_path %>
+      <%= link_to "受講済み", categories_path, class:"btn btn-danger disabled pull-right slide-item" %>
     <% else %>
-      <%= link_to "受講完了", attends_path(lesson_id: @lesson.id), method: :post %>
+      <%= link_to "完了する", attends_path(lesson_id: @lesson.id), method: :post, class:"btn btn-danger pull-right slide-item" %>
     <% end %>
+  </h3>
+  <div class="row">
+    <div class="col-sm-12">
+      <% if @lesson.video? %>
+        <%= video_tag @lesson.video.url, controls: true, poster: @lesson.image.url %>
+      <% else %>
+        <h5>ただいま準備中です</h5>
+      <% end %>
+    </div>
   </div>
 </div>

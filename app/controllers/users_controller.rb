@@ -106,7 +106,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.category_id = params[:category_id]
     @user.save
-    redirect_to categories_path
+    redirect_to category_path(params[:category_id])
   end
 
   private
