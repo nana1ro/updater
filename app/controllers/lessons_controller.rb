@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
 
   before_action :authenticate_user!, only: [:slide]
+  layout "headerless", only: :slide
 
   def show
   	@lesson = Lesson.find(params[:id])

@@ -5,7 +5,7 @@ class AttendsController < ApplicationController
   	attend = Attend.new(user_id: current_user.id, lesson_id: lesson.id, category_id: lesson.category.id )
     attend.time = lesson.time
   	attend.save
-  	redirect_to categories_path
+  	redirect_to top_users_path
   end
 
   private

@@ -1,13 +1,15 @@
 <% @page_title = "管理者/カテゴリーページ" %>
 
-<h1 class="headline">ランク追加ページ</h1>
+<h1 class="page-header">ランク追加ページ</h1>
 
 <div class="row">
   <div class="col-sm-12">
     <%= render "rank_form" %>
     <h3 class="page-header">ランク一覧</h3>
-    <% @ranks.each do |rank| %>
-      <%= link_to rank.name, admins_rank_path(rank.id) %>
-    <% end %>
+      <ul class="nav nav-pills nav-stacked">
+        <% @ranks.each do |rank| %>
+          <h4 class="page-header"><%= link_to rank.name, admins_rank_path(rank.id) %></h4>
+        <% end %>
+      </ul>
   </div>
 </div>

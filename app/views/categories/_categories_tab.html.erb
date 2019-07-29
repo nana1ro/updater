@@ -1,12 +1,17 @@
-<%= link_to "全てのレッスン", categories_path %>
-
-<% @categories.each do |category| %>
-  <%= link_to category.name, category_path(category.id) %>
-    <% if user_signed_in? %>
-      <% if category.id == current_user.category_id %>
-        <button>このカテゴリーを選択中</button>
-      <% else %>
-        <%= button_to "このカリキュラムに変更", change_category_user_path(current_user.id, category_id: category.id) %>
-      <% end %>
-    <% end %>
-<% end %>
+<div class="row">
+  <div class="col-sm-12">
+  	<ul class="nav nav-pills nav-stacked">
+      <% @categories.each do |category| %>
+        <h3 class="page-header"><%= link_to category.name, category_path(category.id) %></br>
+          <% if user_signed_in? %>
+      		<% if category.id == current_user.category_id %>
+        	  <span class="label label-primary small-label">このカテゴリーを選択中</span>
+      		<% else %>
+        	  <span><%= link_to "このカリキュラムに変更", change_category_user_path(current_user.id, category_id: category.id), class:"label label-muted small-label", method: :post %></span>
+      		<% end %>
+    	  <% end %>
+    	</h3>
+	  <% end %>
+	</ul>
+  </div>
+</div>

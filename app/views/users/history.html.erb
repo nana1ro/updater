@@ -31,16 +31,16 @@
       </div>
     </div>
 
-    <!-- TODO: 下記、ドロップダウンリストにする -->
+    <!-- TODO: 下記、ドロップダウンリストにする、テーブルの高さの調整 -->
     <div class="row">
       <div class="history-container col-sm-12">
         <h3 class="page-header">学習カテゴリーの履歴</h3>
         <% if current_user.category %>
           <h5>学習中のカテゴリー</h5>
-          <h5><%= @selected_category.name %></h5>
+          <h3><%= @selected_category.name %></h3>
           <% @selected_category.lessons.each do |lesson| %>
             <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
-            <table class="table table-hover">
+            <table class="table table-hover table-condensed">
             <% if attended_lesson %>
   	          <tr><td><span class="glyphicon glyphicon-ok-circle icon" style="color: #0080ff;"></span>
               <%= link_to lesson.name, lesson_path(lesson.id) %></td>
@@ -56,10 +56,10 @@
 <br>
       <div class="history-container col-sm-12">
           <% @unselected_categories.each do |category| %>
-            <h5><%= category.name %></h5>
+            <h3><%= category.name %></h3>
             <% category.lessons.each do |lesson| %>
               <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
-              <table class="table table-hover">
+              <table class="table table-hover table-condensed">
               <% if attended_lesson %>
                 <tr><td><span class="glyphicon glyphicon-ok-circle icon" style="color: #0080ff;"></span>
                 <%= link_to lesson.name, lesson_path(lesson.id) %></td>
@@ -76,9 +76,9 @@
         <% else %>
       <div class="history-container col-sm-12">
           <% @categories.each do |category| %>
-            <h5><%= category.name %></h5>
+            <h3><%= category.name %></h3>
             <% category.lessons.each do |lesson| %>
-              <table class="table table-hover">
+              <table class="table table-hover table-condensed">
               <tr><td><span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
               <%= link_to lesson.name, lesson_path(lesson.id) %></td>
               <td class="text-right"><%= "未視聴" %></td></tr>

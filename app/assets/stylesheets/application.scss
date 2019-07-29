@@ -35,7 +35,7 @@ html{
 }
 
 body{
-	padding-top: 150px;
+	margin-top: 100px;
 	margin-bottom: 200px;
 }
 
@@ -43,16 +43,37 @@ body{
 	width: 70%;
 }
 
+.row-eq-height{
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .navbar-brand{
 	padding: 0 0 0 50px;
+}
+
+.header-alert{
+	margin-top: -50px;
 }
 
 .search-box{
 	margin-right: 60px;
 }
 
-.alert{
-	margin-top: -100px;
+.label-muted{
+	background-color: #CCCCCC;
+}
+
+.time-text{
+	margin-top: 10px;
+}
+
+.lesson-image{
+	margin-top: 20px;
+}
+
+.small-label{
+	font-size: 10px;
 }
 
 footer{
