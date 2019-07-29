@@ -64,4 +64,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     top_users_path
   end
 
+  def after_update_path_for(resource)
+    user_path(current_user.id)
+  end
+
 end

@@ -1,6 +1,5 @@
 <% @page_title = "レッスン詳細ページ" %>
 
-<div class="show-container">
 <h3 class="page-header">レッスン詳細</h3>
 
 <div class="row row-eq-height">
@@ -22,7 +21,7 @@
       <% end %>
     <h5 class="text-muted page-header time-text"><%= detailed_time(@lesson.time) %></h5>
     <h5><%= @lesson.description %></h5>
-    <%= link_to "視聴ページへ", slide_lesson_path, class:"btn btn-primary pull-right" %>
+    <%= link_to "視聴ページへ", slide_lesson_path, class:"btn btn-primary pull-right slide-item" %>
+    <%= link_to "レッスン一覧へ", categories_path, class:"btn btn-info pull-right slide-item" %>
   </div>
-</div>
 </div>

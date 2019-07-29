@@ -35,6 +35,8 @@ $(function(){
   });
 });
 
+// TODO: 下記読み込み時にユーザートップページが下にずれてしまうため、コメントアウト
+
 // $(window).on('load resize', function(){
 //     var height = $('.navbar').height();
 //     $('body').css('padding-top',height);
