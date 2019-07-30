@@ -1,15 +1,27 @@
 <% @page_title = "管理者/レッスンページ" %>
 
 <h1 class="page-header">レッスン一覧ページ</h1>
-<%= link_to "レッスン追加ページへ", new_admins_lesson_path %>
+<h3 class="page-header"><%= link_to "レッスン追加ページへ", new_admins_lesson_path %></h3>
 
 <div class="row">
   <div class="col-sm-12">
-    <% @categories.each do |category| %>
-      <%= category.name %>
-      <% category.lessons.each do |lesson| %>
-        <%= link_to lesson.name, admins_lesson_path(lesson.id) %>
+  	<!-- TODO: 下記、ソート機能を追加予定 -->
+  	<table class="table table-hover table-striped">
+  	  <tr>
+  	  	<th>カテゴリー</th>
+  	  	<th>レッスン名</th>
+  	  	<th>総受講回数</th>
+  	  </tr>
+      <% @categories.each do |category| %>
+        <% category.lessons.each do |lesson| %>
+          <% number_of_attend = Attend.where(lesson_id: lesson.id).count %>
+          <tr>
+            <td><%= category.name %></td>
+            <td><%= link_to lesson.name, admins_lesson_path(lesson.id) %></td>
+            <td><%= number_of_attend %></td>
+          </tr>
+        <% end %>
       <% end %>
-    <% end %>
+	</table>
   </div>
 </div>

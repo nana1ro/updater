@@ -1,16 +1,28 @@
 <% @page_title = "管理者/レッスン詳細ページ" %>
 
-<h1 class="headline">レッスン詳細ページ</h1>
+<h3 class="page-header">レッスン詳細ページ</h3>
 
-<div class="row">
-  <div class="col-sm-12">
-    <%= @lesson.rank.name %>
-    <%= @lesson.name %>
-    <%= detailed_time(@lesson.time) %>
+<div class="row row-eq-height">
+  <div class="col-sm-4">
     <% if @lesson.image? %>
-      <%= image_tag @lesson.image.url, width: 300, heith: 200 %>
+      <%= image_tag @lesson.image.url, width: 300, height: 200, class:"lesson-image" %>
+    <% else %>
+      <%= image_tag "no_image.png", width: 240, height: 170, class:"lesson-image" %>
     <% end %>
-    <%= @lesson.description %>
-    <%= link_to "編集ページへ", edit_admins_lesson_path %>
+  </div>
+  <div class="col-sm-8">
+    <h3><%= @lesson.name %></h3>
+      <% if @lesson.rank_id == 1 %>
+        <span class="label label-info"><%= @lesson.rank.name %></span></br>
+      <% elsif @lesson.rank_id == 2 %>
+        <span class="label label-success"><%= @lesson.rank.name %></span></br>
+      <% else %>
+        <span class="label label-danger"><%= @lesson.rank.name %></span></br>
+      <% end %>
+    <h5 class="text-muted page-header time-text"><%= detailed_time(@lesson.time) %></h5>
+    <h5><%= @lesson.description %></h5>
+    <%= link_to "視聴ページへ", slide_admins_lesson_path, class:"btn btn-primary pull-right slide-item" %>
+    <%= link_to "レッスン一覧へ", admins_lessons_path, class:"btn btn-info pull-right slide-item" %>
+    <%= link_to "編集ページへ", edit_admins_lesson_path, class:"btn btn-success pull-right slide-item" %>
   </div>
 </div>
