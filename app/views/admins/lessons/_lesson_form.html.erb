@@ -1,43 +1,33 @@
-<%= form_with(model: [:admins, lesson], local: true) do |f| %>
+<%= bootstrap_form_with(model: [:admins, lesson], local: true) do |f| %>
 
   <%= render 'shared/errors', obj: f.object %>
 
-  <%= f.label "ファイル名" %>
   <%= f.text_field :name, required: true %>
 
-  <%= f.label "カテゴリー" %>
   <%= f.collection_select :category_id, Category.all, :id, :name, required: true %>
 
-  <%= f.label "ランク" %>
   <%= f.collection_select :rank_id, Rank.all, :id, :name, required: true %>
 
   <% if @lesson.image? %>
     <%= image_tag @lesson.image.url, width: 300, heith: 200 %>
   <% end %>
-  <%= f.label "画像アップロード" %>
   <%= f.file_field :image %>
 
   <% if @lesson.video? %>
     <%= video_tag @lesson.video.url, controls: true, width: 300, height: 200 %>
   <% end %>
-  <%= f.label "動画アップロード" %>
   <%= f.file_field :video %>
 
-  <%= f.label "時間" %>
   <%= f.number_field :hour, min:"0" %>
 
-  <%= f.label "分数" %>
   <%= f.number_field :minute, min:"0" %>
 
-  <%= f.label "秒数" %>
   <%= f.number_field :second, min:"0" %>
 
-  <%= f.label "説明文" %>
   <%= f.text_field :description, required: true %>
 
-  <%= f.label "公開ステータス" %>
   <%= f.select :status, Lesson.statuses.keys.to_a, {} %>
 
-  <%= f.submit "登録" %>
+  <%= f.submit "登録", class:"btn btn-primary" %>
 
 <% end %>

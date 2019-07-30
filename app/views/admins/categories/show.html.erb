@@ -23,7 +23,7 @@
           <% end %>
         </div>
         <div class="col-sm-7">
-           <h3><%= link_to lesson.name, lesson_path(lesson.id) %></h3>
+           <h3><%= link_to lesson.name, admins_lesson_path(lesson.id) %></h3>
               <% if lesson.rank_id == 1 %>
                 <span class="label label-info"><%= lesson.rank.name %></span></br>
               <% elsif lesson.rank_id == 2 %>

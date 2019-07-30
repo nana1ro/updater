@@ -1,36 +1,49 @@
 <% @page_title = "管理者/トップページ" %>
 
-<h1 class="headline">管理者トップページ</h1>
+<h1 class="page-header">管理者トップページ</h1>
 
-<div class="row">
-  <div class="info-container col-sm-6">
-    <h3>全登録ユーザー数</h3>
-    <%= @number_of_users %>
+<div class="row row-eq-height">
+  <div class="jumbotron col-sm-offset-1 col-sm-4">
+    <h3 class="text-left">これまでに登録した全ユーザー数</h5>
+    <h1 class="text-center"><%= @number_of_users %></h1>
   </div>
-  <div class="info-container col-sm-6">
-    <h3>1週間以内に登録したユーザー数</h3>
-    <%= @recent_number_of_users %>
+  <div class="jumbotron col-sm-offset-2 col-sm-4">
+    <h3 class="text-left">1週間以内に登録したユーザー数</h3>
+    <h1 class="text-center"><%= @recent_number_of_users %></h1>
   </div>
 </div>
 
-<div class="row">
-  <div class="info-container col-sm-6">
-    <h3>レッスンの受講された全回数</h3>
-    <%= @number_of_attends %>
+<div class="row row-eq-height">
+  <div class="jumbotron col-sm-offset-1 col-sm-4">
+    <h3 class="text-left">これまでに受講された全レッスン回数</h3>
+    <h1 class="text-center"><%= @number_of_attends %></h1>
   </div>
-  <div class="info-container col-sm-6">
-    <h3>1週間以内に受講された回数</h3>
-    <%= @recent_number_of_attends %>
+  <div class="jumbotron col-sm-offset-2 col-sm-4">
+    <h3 class="text-left">1週間以内に受講されたレッスン回数</h3>
+    <h1 class="text-center"><%= @recent_number_of_attends %></h1>
   </div>
 </div>
 
 <div class="row">
   <div class="ranking-container col-sm-12">
-    <h3>レッスンの受講回数ランキング</h3>
-    <% @lesson_ranking.each do |lesson| %>
-      <% attend = Attend.where(lesson_id: lesson.id) %>
-      <%= lesson.name %>
-      <%= attend.count %>
-    <% end %>
+    <h3 class="page-header">レッスンの受講回数ランキング</h3>
+      <table class="table table-hover table-striped">
+        <tr>
+          <th>順位</th>
+          <th>カテゴリー</th>
+          <th>レッスン名</th>
+          <th>総受講回数</th>
+        </tr>
+        <% n = 0 %>
+        <% @lesson_ranking.each do |lesson| %>
+        <tr>
+          <% number_of_attend = Attend.where(lesson_id: lesson.id).count %>
+          <td><%= n += 1 %>
+          <td><%= lesson.category.name %></td>
+          <td><%= lesson.name %></td>
+          <td><%= number_of_attend %></td>
+        </tr>
+        <% end %>
+      </table>
   </div>
 </div>
