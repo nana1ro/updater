@@ -46,25 +46,25 @@ Lesson.create(category_id:'1', rank_id:'3', name:'演繹的／帰納的思考', 
 Lesson.create(category_id:'1', rank_id:'3', name:'クリティカル・シンキングⅢ', image: open("#{Rails.root}/db/fixtures/クリティカルシンキング3.jpg"), video: open("#{Rails.root}/db/fixtures/test_movie.mp4"), description:'ビジネスで直面する課題の解決策を立案する上で、ある情報から仮説を立て、仮説の検証を進めながら成果につながる結論を生み出すことは、とても重要です。しかし、漫然と情報を集め、行動するのでは、効率的にビジネスを進めることはできません。与えられた情報から様々な仮説を導き、効率よく取捨選択を行っていくことが、ビジネスの意思決定スピードの差にもつながります。', time:'1800', status:'公開中')
 
 1.upto(10) do |n|
-  Lesson.create(category_id:'2', rank_id:'1', name:"communication#{n}", image:'', video: open("#{Rails.root}/db/fixtures/test_movie.mp4"), description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'2', rank_id:'1', name:"communication#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'3', rank_id:'1', name:"marketing#{n}", image:'', video: open("#{Rails.root}/db/fixtures/test_movie.mp4"), description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'3', rank_id:'1', name:"marketing#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'4', rank_id:'1', name:"leadership#{n}", image:'', video: open("#{Rails.root}/db/fixtures/test_movie.mp4"), description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'4', rank_id:'1', name:"leadership#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'5', rank_id:'1', name:"financial#{n}", image:'', video: open("#{Rails.root}/db/fixtures/test_movie.mp4"), description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'5', rank_id:'1', name:"financial#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'6', rank_id:'1', name:"global#{n}", image:'', video: open("#{Rails.root}/db/fixtures/test_movie.mp4"), description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'6', rank_id:'1', name:"global#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'7', rank_id:'1', name:"carrer_building#{n}", image: open("#{Rails.root}/db/fixtures/test_movie.mp4"), video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'7', rank_id:'1', name:"carrer_building#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'8', rank_id:'1', name:"technovate#{n}", image: open("#{Rails.root}/db/fixtures/test_movie.mp4"), video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'8', rank_id:'1', name:"technovate#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 
 

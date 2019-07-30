@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  layout "headerless", only: :top
+  layout "top", only: :top
 
   def top
   end
