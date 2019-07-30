@@ -25,7 +25,7 @@
           <li class="slide-item">
           <%= link_to lesson_path(lesson.id) do %>
             <% if lesson.image? %>
-              <span class="lesson-image"><%= image_tag lesson.image.url, width: 200, heith: 130 %></span>
+              <span class="lesson-image"><%= image_tag lesson.image.url, width: 200, height: 130 %></span>
             <% else %>
               <span class="lesson-image"><%= image_tag "no_image.png", width: 200, height: 130 %></span>
             <% end %>
@@ -58,7 +58,7 @@
         <li class="slide-item">
         <%= link_to lesson_path(lesson.id) do %>
           <% if lesson.image? %>
-            <span class="lesson-image"><%= image_tag lesson.image.url, width: 200, heith: 130 %></span>
+            <span class="lesson-image"><%= image_tag lesson.image.url, width: 200, height: 130 %></span>
           <% else %>
             <span class="lesson-image"><%= image_tag "no_image.png", width: 200, height: 130 %></span>
           <% end %>

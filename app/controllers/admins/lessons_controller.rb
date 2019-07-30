@@ -1,7 +1,7 @@
 class Admins::LessonsController < ApplicationController
 
   before_action :authenticate_admin!
-  layout "headerless", only: :slide
+  layout "slide", only: :slide
 
   def new
     @lesson = Lesson.new

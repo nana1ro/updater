@@ -1,14 +1,33 @@
 <% @page_title = "このサイトについて" %>
 
-<h1 class="headline">このサイトについて</h1>
+<h1 class="page-header">このサイトについて</h1>
 
-<div class="row">
+<div class="row row-eq-height">
   <div class="col-sm-9">
-  	<h3>texttexttext</h3>
+  	<div class="row">
+  	  <div class="col-sm-offset-1 col-sm-10">
+  	<p class="about-text">Updaterは、学びたい人を応援するオンライン動画学習サイトです。学習レッスンの履歴や学習時間がグラフに反映されるので、モチベーションを高く保って学習することができます。人生100年時代への準備を私たちと一緒に始めましょう！</p>
+  	  </div>
+  	</div>
+  	<div class="row pics-container">
+  	  <div class="col-sm-offset-1 col-sm-4">
+  	  	<%= image_tag "about_1.png", width: 280, height: 210 %>
+  	  </div>
+  	  <div class="col-sm-offset-1 col-sm-4">
+  	  	<%= image_tag "about_2.png", width: 280, height: 210 %>
+  	  </div>
+  	</div>
   </div>
   <div class="col-sm-3">
-    <%= link_to "レッスン一覧へ", categories_path %>
-    <%= link_to "ログインページへ", new_user_session_path %>
-    <%= link_to "新規登録ページへ", new_user_registration_path %>
+  	<div class="row">
+  	  <div class="jumbotron wells col-sm-12">
+        <%= link_to "レッスン一覧へ", categories_path %>
+      </div>
+      <div class="jumbotron wells col-sm-12">
+        <%= link_to "ログインページへ", new_user_session_path %>
+      </div>
+      <div class="jumbotron wells col-sm-12">
+        <%= link_to "新規登録ページへ", new_user_registration_path %>
+      </div>
   </div>
 </div>
