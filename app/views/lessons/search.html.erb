@@ -8,7 +8,7 @@
         <% if lesson.image? %>
           <%= image_tag lesson.image.url, width: 240, height: 170, class:"lesson-image" %>
         <% else %>
-          <%= image_tag "no_image.png", width: 240, height: 170, class:"lesson-image" %>
+          <%= image_tag "/images/no_image.png", width: 240, height: 170, class:"lesson-image" %>
         <% end %>
       <% end %>
     </div>
