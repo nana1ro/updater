@@ -49,22 +49,22 @@ Lesson.create(category_id:'1', rank_id:'3', name:'クリティカル・シンキ
   Lesson.create(category_id:'2', rank_id:'1', name:"communication#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'3', rank_id:'1', name:"marketing#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'3', rank_id:'2', name:"marketing#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'4', rank_id:'1', name:"leadership#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'4', rank_id:'3', name:"leadership#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
   Lesson.create(category_id:'5', rank_id:'1', name:"financial#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'6', rank_id:'1', name:"global#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'6', rank_id:'2', name:"global#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'7', rank_id:'1', name:"carrer_building#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'7', rank_id:'3', name:"carrer_building#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 1.upto(10) do |n|
-  Lesson.create(category_id:'8', rank_id:'1', name:"technovate#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
+  Lesson.create(category_id:'8', rank_id:'2', name:"technovate#{n}", image:'', video:'', description:'description', time:'1800', status:"公開中", created_at:"#{1.day.ago}")
 end
 
 

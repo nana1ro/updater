@@ -19,7 +19,7 @@ class Admins::LessonsController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+    @lessons = Lesson.all
   end
 
   def show
@@ -44,6 +44,18 @@ class Admins::LessonsController < ApplicationController
 
   def slide
     @lesson = Lesson.find(params[:id])
+  end
+
+  def destroy
+    lesson = Lesson.find(params[:id])
+    if lesson.status == "公開中"
+      lesson.status = "公開停止中"
+      lesson.save
+    else
+      lesson.status = "公開中"
+      lesson.save
+    end
+    redirect_to admins_lesson_path(lesson.id)
   end
 
   private

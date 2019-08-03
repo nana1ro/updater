@@ -9,7 +9,7 @@
 
   <div class="col-sm-9">
     <div class="row row-eq-height">
-      <% @category.lessons.each do |lesson| %>
+      <% @lessons.each do |lesson| %>
         <div class="col-sm-4">
           <%= link_to lesson_path(lesson.id) do %>
             <% if lesson.image? %>
@@ -20,16 +20,18 @@
           <% end %>
         </div>
         <div class="col-sm-8">
-           <h3><%= link_to lesson.name, lesson_path(lesson.id) %></h3>
-              <% if lesson.rank_id == 1 %>
-                <span class="label label-info"><%= lesson.rank.name %></span></br>
-              <% elsif lesson.rank_id == 2 %>
-                <span class="label label-success"><%= lesson.rank.name %></span></br>
-              <% else %>
-                <span class="label label-danger"><%= lesson.rank.name %></span></br>
-              <% end %>
-            <h5 class="text-muted page-header time-text"><%= detailed_time(lesson.time) %></h5>
-            <h5><%= lesson.description %></h5>
+          <h3><%= link_to lesson.name, lesson_path(lesson.id) %></h3>
+          <% if lesson.rank %>
+            <% if lesson.rank_id == 1 %>
+              <span class="label label-info"><%= lesson.rank.name %></span></br>
+            <% elsif lesson.rank_id == 2 %>
+              <span class="label label-success"><%= lesson.rank.name %></span></br>
+            <% else %>
+              <span class="label label-danger"><%= lesson.rank.name %></span></br>
+            <% end %>
+          <% end %>
+          <h5 class="text-muted page-header time-text"><%= detailed_time(lesson.time) %></h5>
+          <h5><%= lesson.description %></h5>
         </div>
       <% end %>
     </div>

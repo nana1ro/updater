@@ -21,7 +21,7 @@
     <h3 class="page-header">学習中のカテゴリー一覧</h3>
     <% if current_user.category %>
       <ul class="bxslider">
-        <% @selected_category.lessons.each do |lesson| %>
+        <% @selected_lessons.each do |lesson| %>
           <li class="slide-item">
           <%= link_to lesson_path(lesson.id) do %>
             <% if lesson.image? %>
@@ -30,12 +30,14 @@
               <span class="lesson-image"><%= image_tag "/images/no_image.png", width: 200, height: 130 %></span>
             <% end %>
             <!-- TODO: 下記、jQueryで書き換える -->
-            <% if lesson.rank_id == 1 %>
-              <span class="label label-info"><%= lesson.rank.name %></span></br>
-            <% elsif lesson.rank_id == 2 %>
-              <span class="label label-success"><%= lesson.rank.name %></span></br>
-            <% else %>
-              <span class="label label-danger"><%= lesson.rank.name %></span></br>
+            <% if lesson.rank %>
+              <% if lesson.rank_id == 1 %>
+                <span class="label label-info"><%= lesson.rank.name %></span></br>
+              <% elsif lesson.rank_id == 2 %>
+                <span class="label label-success"><%= lesson.rank.name %></span></br>
+              <% else %>
+                <span class="label label-danger"><%= lesson.rank.name %></span></br>
+              <% end %>
             <% end %>
             <%= lesson.name %></br>
             <%= detailed_time(lesson.time) %></br>
@@ -44,7 +46,7 @@
         <% end %>
       </ul>
     <% else %>
-      <h3>現在選択中のカテゴリーはありません</h3>
+      <h3 class="text-muted">現在選択中のカテゴリーはありません</h3>
       <% link_to "カテゴリー選択を選択する", categories_path %>
     <% end %>
   </div>
@@ -63,12 +65,14 @@
             <span class="lesson-image"><%= image_tag "/images/no_image.png", width: 200, height: 130 %></span>
           <% end %>
           <!-- TODO: 下記、jQueryで書き換える -->
-          <% if lesson.rank_id == 1 %>
-            <span class="label label-info"><%= lesson.rank.name %></span></br>
-          <% elsif lesson.rank_id == 2 %>
-            <span class="label label-success"><%= lesson.rank.name %></span></br>
-          <% else %>
-            <span class="label label-danger"><%= lesson.rank.name %></span></br>
+          <% if lesson.rank %>
+            <% if lesson.rank_id == 1 %>
+              <span class="label label-info"><%= lesson.rank.name %></span></br>
+            <% elsif lesson.rank_id == 2 %>
+              <span class="label label-success"><%= lesson.rank.name %></span></br>
+            <% else %>
+              <span class="label label-danger"><%= lesson.rank.name %></span></br>
+            <% end %>
           <% end %>
           <%= lesson.name %></br>
           <%= detailed_time(lesson.time) %></br>
