@@ -24,8 +24,9 @@
     <h5 class="text-muted"><%= @lesson.status %></h5>
     <h5 class="text-muted page-header time-text"><%= detailed_time(@lesson.time) %></h5>
     <h5><%= @lesson.description %></h5>
+    <%= link_to "公開ステータス変更", admins_lesson_path(@lesson.id), method: :delete, class:"btn btn-danger pull-right slide-item" %>
+    <%= link_to "編集ページへ", edit_admins_lesson_path, class:"btn btn-success pull-right slide-item" %>
     <%= link_to "視聴ページへ", slide_admins_lesson_path, class:"btn btn-primary pull-right slide-item" %>
     <%= link_to "レッスン一覧へ", admins_lessons_path, class:"btn btn-info pull-right slide-item" %>
-    <%= link_to "編集ページへ", edit_admins_lesson_path, class:"btn btn-success pull-right slide-item" %>
   </div>
 </div>

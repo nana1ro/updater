@@ -39,7 +39,11 @@
         <tr>
           <% number_of_attend = Attend.where(lesson_id: lesson.id).count %>
           <td><%= n += 1 %>
-          <td><%= lesson.category.name %></td>
+          <% if lesson.category %>
+            <td><%= lesson.category.name %></td>
+          <% else %>
+            <td class="text-muted">カテゴリー編集中</td>
+          <% end %>
           <td><%= lesson.name %></td>
           <td><%= number_of_attend %></td>
         </tr>

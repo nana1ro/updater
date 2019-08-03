@@ -35,6 +35,7 @@ class Admins::CategoriesController < ApplicationController
   def destroy
     category = Category.find(params[:id])
     category.destroy
+    category.lessons.update_all(status: "公開停止中")
     flash[:notice] = "削除が完了しました"
     redirect_to admins_categories_path
   end

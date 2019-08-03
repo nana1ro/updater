@@ -9,7 +9,7 @@
 
   <div class="col-sm-9">
     <div class="row row-eq-height">
-      <% @category.lessons.each do |lesson| %>
+      <% @lessons.each do |lesson| %>
         <div class="col-sm-4">
           <%= link_to lesson_path(lesson.id) do %>
             <% if lesson.image? %>

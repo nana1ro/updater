@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :admins do
     root to: 'home#top'
     resources :categories, except: [:new, :edit]
-    resources :lessons, except: [:destroy] do
+    resources :lessons do
       get 'slide', on: :member
     end
     resources :ranks, except: [:new, :edit]

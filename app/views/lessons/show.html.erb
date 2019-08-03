@@ -21,9 +21,16 @@
         <span class="label label-danger"><%= @lesson.rank.name %></span></br>
       <% end %>
     <% end %>
+    <% if @lesson.status == "公開停止中" %>
+      <h5 class="text-danger">公開停止中</h5>
+    <% end %>
     <h5 class="text-muted page-header time-text"><%= detailed_time(@lesson.time) %></h5>
     <h5><%= @lesson.description %></h5>
-    <%= link_to "視聴ページへ", slide_lesson_path, class:"btn btn-primary pull-right slide-item" %>
+    <% if @lesson.status == "公開中" %>
+      <%= link_to "視聴ページへ", slide_lesson_path, class:"btn btn-primary pull-right slide-item" %>
+    <% else %>
+      <%= link_to "前へ戻る", :back, class:"btn btn-primary pull-right slide-item" %>
+    <% end %>
     <%= link_to "レッスン一覧へ", categories_path, class:"btn btn-info pull-right slide-item" %>
   </div>
 </div>

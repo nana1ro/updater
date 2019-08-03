@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
 
   def top
-    @selected_category = current_user.category
-    @new_lessons = Lesson.order(created_at: :desc).limit(10)
+    @selected_lessons = current_user.category.lessons.where(status: "公開中")
+    @new_lessons = Lesson.order(created_at: :desc).limit(10).where(status: "公開中")
 
     # 下記、lesson_chart用のデータ
 
