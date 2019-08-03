@@ -3,12 +3,16 @@
 
     <%= bootstrap_form_for @user do |f| %>
 
+      <% if flash[:success] %>
+        <%= render "shared/success" %>
+      <% end %>
+
       <%= render 'shared/errors', obj: f.object %>
-      <%= f.text_field :last_name, value: @user.last_name %>
-      <%= f.text_field :first_name, value:  @user.first_name %>
-      <%= f.text_field :last_name_kana, value: @user.last_name_kana %>
-      <%= f.text_field :first_name_kana, value:  @user.first_name_kana %>
-      <%= f.email_field :email, value: @user.email %>
+      <%= f.text_field :last_name, required: true, value: @user.last_name %>
+      <%= f.text_field :first_name, required: true, value:  @user.first_name %>
+      <%= f.text_field :last_name_kana, required: true, value: @user.last_name_kana %>
+      <%= f.text_field :first_name_kana, required: true, value:  @user.first_name_kana %>
+      <%= f.email_field :email, required: true, value: @user.email %>
       <%= f.submit "設定を保存する", class:"btn btn-primary" %>
 
     <% end %>

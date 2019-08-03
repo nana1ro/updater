@@ -1,14 +1,15 @@
 <% @page_title = "管理者/ランク詳細ページ" %>
 
-<h1 class="headline">ランク編集ページ</h1>
+<h1 class="page-header">ランク編集ページ</h1>
 
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-12">
     <%= render "rank_form" %>
-    </br>
-    <%= link_to "削除", admins_rank_path, method: :delete, class:"btn btn-danger" %>
+    <%= link_to "削除", admins_rank_path, method: :delete, class:"btn btn-danger pull-right slide-item", data: {confirm: "本当に削除しますか？"} %>
   </div>
+</div>
 
+<div class="row">
   <div class="col-sm-8">
     <h3 class="page-header">このランクのレッスン一覧</h3>
     <div class="row row-eq-height">

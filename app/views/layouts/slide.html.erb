@@ -12,6 +12,12 @@
   </head>
 
   <body>
+    <% if flash[:danger] %>
+      <div class="alert alert-danger alert-dismissible slide-alert clearfix">
+        <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= flash[:danger] %>
+      </div>
+    <% end %>
     <main>
       <div class="container">
         <%= yield %>

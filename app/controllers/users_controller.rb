@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:success] = "プロフィールを変更しました"
       redirect_to user_path(@user.id)
     else
       render 'show'
@@ -76,15 +77,17 @@ class UsersController < ApplicationController
 
     attends_before_three_weeks = Attend.three_weeks_attends.where(user_id: current_user.id)
     @learning_time_before_three_weeks = attends_before_three_weeks.sum(:time)
-  end
 
-    # ここまで
+     # ここまで
+     
+  end
 
 
   def target_time
     @user = User.find(params[:id])
     @user.target_time = (params[:hour].to_i * 3600) + (params[:minute].to_i * 60)
     if @user.save
+      flash[:notice] = "目標時間を変更しました"
       redirect_to history_user_path(@user.id)
     else
       @categories = Category.all

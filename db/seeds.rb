@@ -10,7 +10,7 @@ admin = Admin.new(email:'admins@admins.com', password:'admins')
 admin.save!
 
 
-user = User.new(last_name:'前田', first_name:'慶次', last_name_kana:'マエダ', first_name_kana:'ケイジ', email:'maeda@maeda.com', password:'kmaeda', category_id:'1', target_time:'25200')
+user = User.new(last_name:'前田', first_name:'慶次', last_name_kana:'マエダ', first_name_kana:'ケイジ', email:'maeda@maeda.com', password:'kmaeda', category_id:'1', target_time:'21600')
 user.save!
 
 1.upto(49) do |n|

@@ -1,5 +1,9 @@
 <%= bootstrap_form_with(model: [:admins, lesson], local: true) do |f| %>
 
+  <% if flash[:success] %>
+    <%= render "shared/success" %>
+  <% end %>
+
   <%= render 'shared/errors', obj: f.object %>
 
   <%= f.text_field :name, required: true %>

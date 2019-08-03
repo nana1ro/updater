@@ -1,5 +1,9 @@
 <%= form_with(url: target_time_user_path(@user.id), html: {class:"form-inline"}, local: true) do |f| %>
 
+  <% if flash[:success] %>
+    <%= render "shared/success" %>
+  <% end %>
+
   <%= render 'shared/errors', obj: user %>
   <%= f.submit "目標時間を変更する", class:"btn-sm btn-primary" %>
   <span class="text-muted">目標：</span><%= f.number_field :hour, min:"0", value: @user.target_time / 3600, style: "width:33px" %>
