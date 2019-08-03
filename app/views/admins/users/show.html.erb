@@ -11,7 +11,7 @@
       <% if @user.category %>
         <li class="page-header">カテゴリー：<%= @user.category.name %></li>
       <% end %>
-      <li><%= button_to "強制退会", admins_user_path, method: :delete, class:"btn btn-danger pull-right" %></li>
+      <li><%= button_to "強制退会", admins_user_path, method: :delete, class:"btn btn-danger pull-right", data: {confirm: "本当に退会させますか？"} %></li>
     </ul>
   </div>
 

@@ -11,6 +11,7 @@ class Admins::LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
     @lesson.time = (params[:lesson][:hour].to_i * 3600) + (params[:lesson][:minute].to_i * 60) + (params[:lesson][:second].to_i)
     if @lesson.save
+      flash[:notice] = "登録が完了しました"
       redirect_to admins_lessons_path
     else
       render 'new'
@@ -34,6 +35,7 @@ class Admins::LessonsController < ApplicationController
     @lesson.update(lesson_params)
     @lesson.time = (params[:lesson][:hour].to_i * 3600) + (params[:lesson][:minute].to_i * 60) + (params[:lesson][:second].to_i)
     if @lesson.save
+      flash[:success] = "登録が完了しました"
       redirect_to admins_lessons_path
     else
       render 'edit'

@@ -5,6 +5,7 @@ class Admins::CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
+      flash[:notice] = "登録が完了しました"
       redirect_to admins_categories_path
     else
       @categories = Category.all
@@ -24,6 +25,7 @@ class Admins::CategoriesController < ApplicationController
   def update
     category = Category.find(params[:id])
     if category.update(category_params)
+      flash[:notice] = "登録が完了しました"
       redirect_to admins_categories_path
     else
       render 'show'
@@ -33,6 +35,7 @@ class Admins::CategoriesController < ApplicationController
   def destroy
     category = Category.find(params[:id])
     category.destroy
+    flash[:notice] = "削除が完了しました"
     redirect_to admins_categories_path
   end
 

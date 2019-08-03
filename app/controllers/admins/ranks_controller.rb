@@ -5,6 +5,7 @@ class Admins::RanksController < ApplicationController
   def create
     @rank = Rank.new(rank_params)
     if @rank.save
+      flash[:success] = "登録が完了しました"
       redirect_to admins_ranks_path
     else
       @ranks = Rank.all
@@ -24,6 +25,7 @@ class Admins::RanksController < ApplicationController
   def update
     @rank = Rank.find(params[:id])
     if @rank.update(rank_params)
+      flash[:success] = "登録が完了しました"
       redirect_to admins_ranks_path
     else
       render 'show'

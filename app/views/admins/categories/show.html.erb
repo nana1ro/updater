@@ -3,13 +3,14 @@
 <h1 class="page-header">カテゴリー編集ページ</h1>
 
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-12">
     <%= render "category_form" %>
-  </br>
-    <%= link_to "削除", admins_category_path, method: :delete, class:"btn btn-danger" %>
+    <%= link_to "削除", admins_category_path, method: :delete, class:"btn btn-danger pull-right slide-item", data: {confirm: "このカテゴリーの全てのレッスンが公開停止中になります。本当に削除しますか？"} %>
   </div>
+</div>
 
-  <div class="col-sm-8">
+<div class="row">
+  <div class="col-sm-12">
     <h3 class="page-header">このカテゴリーのレッスン一覧</h3>
     <div class="row row-eq-height">
       <% @category.lessons.each do |lesson| %>
