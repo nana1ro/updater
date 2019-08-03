@@ -12,6 +12,7 @@
   </div>
   <div class="col-sm-8">
     <h3><%= @lesson.name %></h3>
+    <% if @lesson.rank %>
       <% if @lesson.rank_id == 1 %>
         <span class="label label-info"><%= @lesson.rank.name %></span></br>
       <% elsif @lesson.rank_id == 2 %>
@@ -19,6 +20,8 @@
       <% else %>
         <span class="label label-danger"><%= @lesson.rank.name %></span></br>
       <% end %>
+    <% end %>
+    <h5 class="text-muted"><%= @lesson.status %></h5>
     <h5 class="text-muted page-header time-text"><%= detailed_time(@lesson.time) %></h5>
     <h5><%= @lesson.description %></h5>
     <%= link_to "視聴ページへ", slide_admins_lesson_path, class:"btn btn-primary pull-right slide-item" %>

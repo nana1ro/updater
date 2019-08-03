@@ -10,7 +10,8 @@
   	  <tr>
   	  	<th>カテゴリー</th>
   	  	<th>レッスン名</th>
-  	  	<th>総受講回数</th>
+  	  	<th class="text-center">総受講回数</th>
+        <th class="text-center">公開ステータス</th>
   	  </tr>
       <% @categories.each do |category| %>
         <% category.lessons.each do |lesson| %>
@@ -18,7 +19,8 @@
           <tr>
             <td><%= category.name %></td>
             <td><%= link_to lesson.name, admins_lesson_path(lesson.id) %></td>
-            <td><%= number_of_attend %></td>
+            <td class="text-center"><%= number_of_attend %></td>
+            <td class="text-center"><%= lesson.status %></td>
           </tr>
         <% end %>
       <% end %>

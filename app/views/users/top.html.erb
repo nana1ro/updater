@@ -30,12 +30,14 @@
               <span class="lesson-image"><%= image_tag "/images/no_image.png", width: 200, height: 130 %></span>
             <% end %>
             <!-- TODO: 下記、jQueryで書き換える -->
-            <% if lesson.rank_id == 1 %>
-              <span class="label label-info"><%= lesson.rank.name %></span></br>
-            <% elsif lesson.rank_id == 2 %>
-              <span class="label label-success"><%= lesson.rank.name %></span></br>
-            <% else %>
-              <span class="label label-danger"><%= lesson.rank.name %></span></br>
+            <% if lesson.rank %>
+              <% if lesson.rank_id == 1 %>
+                <span class="label label-info"><%= lesson.rank.name %></span></br>
+              <% elsif lesson.rank_id == 2 %>
+                <span class="label label-success"><%= lesson.rank.name %></span></br>
+              <% else %>
+                <span class="label label-danger"><%= lesson.rank.name %></span></br>
+              <% end %>
             <% end %>
             <%= lesson.name %></br>
             <%= detailed_time(lesson.time) %></br>
@@ -63,12 +65,14 @@
             <span class="lesson-image"><%= image_tag "/images/no_image.png", width: 200, height: 130 %></span>
           <% end %>
           <!-- TODO: 下記、jQueryで書き換える -->
-          <% if lesson.rank_id == 1 %>
-            <span class="label label-info"><%= lesson.rank.name %></span></br>
-          <% elsif lesson.rank_id == 2 %>
-            <span class="label label-success"><%= lesson.rank.name %></span></br>
-          <% else %>
-            <span class="label label-danger"><%= lesson.rank.name %></span></br>
+          <% if lesson.rank %>
+            <% if lesson.rank_id == 1 %>
+              <span class="label label-info"><%= lesson.rank.name %></span></br>
+            <% elsif lesson.rank_id == 2 %>
+              <span class="label label-success"><%= lesson.rank.name %></span></br>
+            <% else %>
+              <span class="label label-danger"><%= lesson.rank.name %></span></br>
+            <% end %>
           <% end %>
           <%= lesson.name %></br>
           <%= detailed_time(lesson.time) %></br>
