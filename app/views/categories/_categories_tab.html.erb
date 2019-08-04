@@ -5,9 +5,9 @@
         <h3 class="page-header"><%= link_to category.name, category_path(category.id) %></br>
           <% if user_signed_in? %>
       		<% if category.id == current_user.category_id %>
-        	  <span class="label label-primary small-label">このカテゴリーを選択中</span>
+        	  <span class="label label-primary small-label">このカテゴリーを学習中</span>
       		<% else %>
-        	  <span><%= link_to "このカリキュラムに変更", change_category_user_path(current_user.id, category_id: category.id), class:"label label-muted small-label", method: :post %></span>
+        	  <span><%= link_to "このカテゴリーに変更", change_category_user_path(current_user.id, category_id: category.id), class:"label label-muted small-label", method: :post %></span>
       		<% end %>
     	  <% end %>
     	</h3>
