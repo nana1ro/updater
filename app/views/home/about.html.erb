@@ -11,22 +11,22 @@
   	</div>
   	<div class="row pics-container">
   	  <div class="col-sm-offset-1 col-sm-4">
-  	  	<%= image_tag "/images/about_1.png", width: 280, height: 210 %>
+  	  	<%= image_tag "/images/about_1.png", width: 280, height: 210, class:"about-image" %>
   	  </div>
   	  <div class="col-sm-offset-1 col-sm-4">
-  	  	<%= image_tag "/images/about_2.png", width: 280, height: 210 %>
+  	  	<%= image_tag "/images/about_2.png", width: 280, height: 210, class:"about-image" %>
   	  </div>
   	</div>
   </div>
   <div class="col-sm-3">
   	<div class="row">
-  	  <div class="jumbotron wells col-sm-12">
+  	  <div class="jumbotron wells col-sm-12 about-box">
         <%= link_to "レッスン一覧へ", categories_path %>
       </div>
-      <div class="jumbotron wells col-sm-12">
+      <div class="jumbotron wells col-sm-12 about-box">
         <%= link_to "ログインページへ", new_user_session_path %>
       </div>
-      <div class="jumbotron wells col-sm-12">
+      <div class="jumbotron wells col-sm-12 about-box">
         <%= link_to "新規登録ページへ", new_user_registration_path %>
       </div>
   </div>
