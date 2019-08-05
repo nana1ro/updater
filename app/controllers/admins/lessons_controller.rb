@@ -19,7 +19,7 @@ class Admins::LessonsController < ApplicationController
   end
 
   def index
-    @lessons = Lesson.all
+    @lessons = Lesson.all.page(params[:page]).per(25)
   end
 
   def show

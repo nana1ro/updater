@@ -12,12 +12,11 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
 //= require jquery
 //= require Chart.min
 //= require bootstrap-sprockets
 //= require bxslider
+//= require_tree .
 
 $(function(){
    $('.bxslider').bxSlider({
@@ -35,9 +34,21 @@ $(function(){
   });
 });
 
-// TODO: 下記読み込み時にユーザートップページが下にずれてしまうため、コメントアウト
+$(function(){
+	$('.about-image').fadeIn(1200);
+});
 
-// $(window).on('load resize', function(){
-//     var height = $('.navbar').height();
-//     $('body').css('padding-top',height);
-// });
+$(function(){
+	$('.acdn-icon').click(function(){
+		if ($(this).hasClass('glyphicon-download')){
+			$(this).removeClass('glyphicon-download');
+ 			$(this).addClass('glyphicon-upload');
+ 			$(this).parent('h3').removeClass('page-header');
+		} else {
+ 			$(this).removeClass('glyphicon-upload');
+ 			$(this).addClass('glyphicon-download');
+ 			$(this).parent('h3').addClass('page-header');
+ 		};
+ 	});
+});
+

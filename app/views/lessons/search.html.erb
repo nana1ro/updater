@@ -28,6 +28,13 @@
     </div>
   <% end %>
 </div>
+
+<div class="row">
+  <div class="col-sm-offset-4 col-sm-6">
+    <%= paginate @search_lessons %>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-sm-12">
     <% if @search_lessons.blank? %>

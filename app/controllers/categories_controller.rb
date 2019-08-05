@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
   def index
   	@categories = Category.all
-  	@lessons = Lesson.where(status: "公開中")
+  	@lessons = Lesson.where(status: "公開中").page(params[:page]).per(10)
   end
 
   def show

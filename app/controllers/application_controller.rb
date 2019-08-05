@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def set_search
   	@search = Lesson.ransack(params[:q])
-  	@search_lessons = @search.result.includes(:rank).where(status: "公開中")
+  	@search_lessons = @search.result.includes(:rank).where(status: "公開中").page(params[:page]).per(10)
   end
 
 
