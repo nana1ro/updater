@@ -3,24 +3,22 @@
 <h1 class="page-header">カテゴリー別レッスン一覧</h1>
 
 <div class="row">
-  <div class="col-sm-3">
+  <div class="col-md-3">
     <%= render "categories_tab" %>
   </div>
 
-  <div class="col-sm-9">
-    <div class="row row-eq-height">
-      <% @lessons.each do |lesson| %>
-        <div class="col-sm-4">
-          <%= link_to lesson_path(lesson.id) do %>
-            <% if lesson.image? %>
-              <%= image_tag lesson.image.url, width: 240, height: 170, class:"lesson-image" %>
-            <% else %>
-              <%= image_tag "/images/no_image.png", width: 240, height: 170, class:"lesson-image" %>
-            <% end %>
+  <div class="col-md-9">
+    <% @lessons.each do |lesson| %>
+      <div class="media">
+        <%= link_to lesson_path(lesson.id), class:"media-left hidden-xs" do %>
+          <% if lesson.image? %>
+            <%= image_tag lesson.image.url, width: 240, height: 170, class:"lesson-image" %>
+          <% else %>
+            <%= image_tag "/images/no_image.png", width: 240, height: 170, class:"lesson-image" %>
           <% end %>
-        </div>
-        <div class="col-sm-8">
-          <h3><%= link_to lesson.name, lesson_path(lesson.id) %></h3>
+        <% end %>
+        <div class="media-body">
+          <h3 class="media-heading"><%= link_to lesson.name, lesson_path(lesson.id) %></h3>
           <% if lesson.rank %>
             <% if lesson.rank_id == 1 %>
               <span class="label label-info"><%= lesson.rank.name %></span></br>
@@ -33,7 +31,7 @@
           <h5 class="text-muted page-header time-text"><%= detailed_time(lesson.time) %></h5>
           <h5><%= lesson.description %></h5>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

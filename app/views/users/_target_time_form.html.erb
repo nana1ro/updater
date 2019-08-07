@@ -5,10 +5,12 @@
   <% end %>
 
   <%= render 'shared/errors', obj: user %>
-  <%= f.submit "目標時間を変更する", class:"btn-sm btn-primary" %>
+  <p>
   <span class="text-muted">目標：</span><%= f.number_field :hour, min:"0", value: @user.target_time / 3600, style: "width:33px" %>
   <span class="text-muted">時間</span>
   <%= f.number_field :minute, min:"0", value: @user.target_time % 3600 / 60, style: "width:33px"  %>
   <span class="text-muted">分</span>
+  </p>
+  <%= f.submit "目標時間を変更する", class:"btn-sm btn-primary" %>
 
 <% end %>

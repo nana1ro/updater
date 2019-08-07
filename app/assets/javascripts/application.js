@@ -30,12 +30,13 @@ $(function(){
 		moveSlides: 1,
 		slideWidth: 200,
 		autoHover: true,
-		touchEnabled: false
+		touchEnabled: false,
+		responsive: true,
   });
 });
 
 $(function(){
-	$('.about-image').fadeIn(1200);
+	$('.about-image').fadeIn(1800);
 });
 
 $(function(){
@@ -52,3 +53,7 @@ $(function(){
  	});
 });
 
+$(window).on('load resize', function(){
+    var height = $('.navbar').height()-50;
+    $('body').css('padding-top', height);
+});

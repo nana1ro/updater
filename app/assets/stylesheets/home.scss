@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .body-top{
-	background-image: image-url("/images/top_image.png");
+	background-image: image-url("/images/top_image5.png");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -13,24 +13,37 @@
 
 .top-container{
 	position: relative;
+	height: auto;
 }
 
 .top-headline{
 	position: absolute;
-	top: 0;
-	left: 200px;
-	font-size: 120px;
-	color: #778F9A;
+	left: 10%;
+	font-size: 80px;
+	color: #999999;
 }
 
 .top-link{
 	position: absolute;
-	top: 180px;
-	left: 200px;
+	top: 110px;
+	left: 10%;
+}
+
+.mobile-headline{
+	position: absolute;
+	left: 5%;
+	color: #999999;
+	margin-top: -30px;
+}
+
+.mobile-link{
+	position: absolute;
+	top: 10px;
+	left: 5%;
 }
 
 .about-text{
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .pics-container{

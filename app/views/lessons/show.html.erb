@@ -2,16 +2,19 @@
 
 <h3 class="page-header">レッスン詳細</h3>
 
-<div class="row row-eq-height">
-  <div class="col-sm-4">
+<div class="media">
+  <%= link_to slide_lesson_path, class:"media-left hidden-xs" do %>
     <% if @lesson.image? %>
       <%= image_tag @lesson.image.url, width: 300, height: 200, class:"lesson-image" %>
     <% else %>
       <%= image_tag "/images/no_image.png", width: 240, height: 170, class:"lesson-image" %>
     <% end %>
+  <% end %>
+  <div class="visible-xs mobile-image">
+    <%= image_tag @lesson.image.url, width: 240, height:180, class:"img-thumbnail" %>
   </div>
-  <div class="col-sm-8">
-    <h3><%= @lesson.name %></h3>
+  <div class="media-body">
+    <h3 class="media-heading"><%= @lesson.name %></h3>
     <% if @lesson.rank %>
       <% if @lesson.rank_id == 1 %>
         <span class="label label-info"><%= @lesson.rank.name %></span></br>
