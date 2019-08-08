@@ -1,33 +1,45 @@
 <% @page_title = "このサイトについて" %>
 
-<h1 class="page-header">このサイトについて</h1>
+<h1 class="page-header hidden-xs">このサイトについて</h1>
+<h3 class="page-header visible-xs">このサイトについて</h3>
 
 <div class="row row-eq-height">
-  <div class="col-sm-9">
+  <div class="col-md-9">
   	<div class="row">
-  	  <div class="col-sm-offset-1 col-sm-10">
-  	<p class="about-text">Updaterは、学びたい人を応援するオンライン動画学習サイトです。学習レッスンの履歴や学習時間がグラフに反映されるので、モチベーションを高く保って学習することができます。人生100年時代への準備を私たちと一緒に始めましょう！</p>
+  	  <div class="col-md-offset-1 col-md-10 col-md-offset-1">
+  	  <p class="about-text">Updaterは、学びたい人を応援するオンライン動画学習サイトです。学習レッスンの履歴や学習時間がグラフに反映されるので、モチベーションを高く保って学習することができます。人生100年時代への準備を私たちと一緒に始めましょう！</p>
   	  </div>
   	</div>
-  	<div class="row pics-container">
-  	  <div class="col-sm-offset-1 col-sm-4">
-  	  	<%= image_tag "/images/about_1.png", width: 280, height: 210, class:"about-image" %>
+    <div class="row">
+  	  <div class="row pics-container hidden-xs">
+  	    <div class="col-md-offset-1 col-md-4 col-md-offset-1">
+  	  	  <%= image_tag "/images/about_1.png", width: 320, height: 240, class:"about-image" %>
+  	    </div>
+  	    <div class="col-md-offset-1 col-md-4 col-md-offset-1">
+  	  	  <%= image_tag "/images/about_2.png", width: 320, height: 240, class:"about-image" %>
+  	    </div>
   	  </div>
-  	  <div class="col-sm-offset-1 col-sm-4">
-  	  	<%= image_tag "/images/about_2.png", width: 280, height: 210, class:"about-image" %>
-  	  </div>
-  	</div>
+      <div class="row pics-container visible-xs">
+        <div class="col-md-offset-1 col-md-4 col-md-offset-1">
+          <%= image_tag "/images/about_1.png", width: 240, height: 160, class:"about-image" %>
+        </div>
+        <div class="col-md-offset-1 col-md-4 col-md-offset-1">
+          <%= image_tag "/images/about_2.png", width: 240, height: 160, class:"about-image" %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-sm-3">
+  <div class="col-md-3">
   	<div class="row">
-  	  <div class="jumbotron wells col-sm-12 about-box">
+  	  <div class="jumbotron wells about-box">
         <%= link_to "レッスン一覧へ", categories_path %>
       </div>
-      <div class="jumbotron wells col-sm-12 about-box">
+      <div class="jumbotron wells about-box">
         <%= link_to "ログインページへ", new_user_session_path %>
       </div>
-      <div class="jumbotron wells col-sm-12 about-box">
+      <div class="jumbotron wells about-box">
         <%= link_to "新規登録ページへ", new_user_registration_path %>
       </div>
+    </div>
   </div>
 </div>

@@ -1,10 +1,6 @@
 <% @page_title = "学習履歴ページ" %>
 
-<h1 class="page-header">マイページ</h1>
-
-<%= render "mobile_history" %>
-
-<div class="row hidden-xs">
+<div class="row visible-xs">
   <div class="col-md-3">
     <%= render "mypage_tab" %>
   </div>
@@ -12,8 +8,8 @@
     <h3 class="page-header">学習時間の履歴</h3>
     <div class="row">
       <div class="chart-container col-sm-6">
-        <canvas id="timeChart" width="300" height="200"></canvas>
-        <%= render "time_chart" %>
+        <canvas id="mobiletimeChart" class="canvas-chart" width="240" height="180"></canvas>
+        <%= render "mobile_time_chart" %>
         <!-- TODO: 下記、canvas内に書き込む -->
         <div class="chartitem-container">
           <p class="text-muted"><span>達成率：</span><%= number_to_percentage(@learning_time / current_user.target_time.to_f * 100, precision: 0) %></p>
@@ -23,8 +19,8 @@
       </div>
 
       <div class="chart-container col-sm-6">
-        <canvas id="historyChart" width="300" height="200"></canvas>
-        <%= render "recent_time_chart" %>
+        <canvas id="mobilehistoryChart" class="canvas-chart" width="240" height="180"></canvas>
+        <%= render "mobile_recent_time_chart" %>
         <div class="chartitem-container">
           <p class="text-muted"><span>今週：</span><%= rough_time(@learning_time) %></p>
           <p class="text-muted"><span>1週間前：</span><%= rough_time(@learning_time_before_two_weeks) %></p>
@@ -45,22 +41,19 @@
             <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
             <table class="table table-hover table-condensed">
               <% if attended_lesson %>
-  	            <tr>
+                <tr>
                   <td>
                     <span class="glyphicon glyphicon-ok-circle icon" style="color: #0080ff;"></span>
                     <%= link_to lesson.name, lesson_path(lesson.id) %>
-                  </td>
-                  <td class="text-right">
-                    <%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+                    <p><%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %></p>
                   </td>
                 </tr>
               <% elsif lesson.status == "公開停止中" %>
-  	            <tr>
+                <tr>
                   <td>
                     <span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
                     <%= link_to lesson.name, lesson_path(lesson.id) %>
-                  </td>
-                  <td class="text-right text-danger"><%= "公開停止中" %>
+                    <p class="text-danger"><%= "公開停止中" %></p>
                   </td>
                 </tr>
               <% else %>
@@ -68,9 +61,7 @@
                   <td>
                     <span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
                     <%= link_to lesson.name, lesson_path(lesson.id) %>
-                  </td>
-                  <td class="text-right">
-                    <%= "未視聴" %>
+                    <p><%= "未視聴" %></p>
                   </td>
                 </tr>
               <% end %>
@@ -82,9 +73,9 @@
       <div class="row">
         <div class="col-md-offset-1 col-md-10 col-md-offset-1">
           <% @unselected_categories.each_with_index do |category, i| %>
-            <h3 class="page-header"><a class="glyphicon glyphicon-download acdn-icon" data-toggle="collapse" data-target="#acdn<%= i %>"></a>
+            <h3 class="page-header"><a class="glyphicon glyphicon-download acdn-icon" data-toggle="collapse" data-target="#mobile-acdn<%= i %>"></a>
               <%= category.name %></h3>
-            <div id="acdn<%= i %>" class="collapse">
+            <div id="mobile-acdn<%= i %>" class="collapse">
               <% category.lessons.each do |lesson| %>
                 <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
                 <table class="table table-hover table-condensed">
@@ -93,8 +84,7 @@
                       <td>
                         <span class="glyphicon glyphicon-ok-circle icon" style="color: #0080ff;"></span>
                         <%= link_to lesson.name, lesson_path(lesson.id) %>
-                      </td>
-                      <td class="text-right"><%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+                        <p><%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %></p>
                       </td>
                     </tr>
                   <% elsif lesson.status == "公開停止中" %>
@@ -102,8 +92,7 @@
                       <td>
                         <span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
                         <%= link_to lesson.name, lesson_path(lesson.id) %>
-                      </td>
-                      <td class="text-right text-danger"><%= "公開停止中" %>
+                        <p class="text-danger"><%= "公開停止中" %></p>
                       </td>
                     </tr>
                   <% else %>
@@ -111,9 +100,7 @@
                       <td>
                         <span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
                         <%= link_to lesson.name, lesson_path(lesson.id) %>
-                      </td>
-                      <td class="text-right">
-                        <%= "未視聴" %>
+                        <p><%= "未視聴" %></p>
                       </td>
                     </tr>
                   <% end %>
@@ -128,9 +115,9 @@
       <div class="row">
         <div class="col-md-offset-1 col-md-10 col-md-offset-1">
           <% @categories.each_with_index do |category, i| %>
-            <h3 class="page-header"><a class="glyphicon glyphicon-download down-icon" data-toggle="collapse" data-target="#acdn<%= i %>"></a>
+            <h3 class="page-header"><a class="glyphicon glyphicon-download down-icon" data-toggle="collapse" data-target="#mobile-acdn<%= i %>"></a>
               <%= category.name %></h3>
-            <div id="acdn<%= i %>" class="collapse">
+            <div id="mobile-acdn<%= i %>" class="collapse">
               <% category.lessons.each do |lesson| %>
                 <% attended_lesson = Attend.find_by(user_id: current_user.id, lesson_id: lesson.id) %>
                 <table class="table table-hover table-condensed">
@@ -139,8 +126,7 @@
                       <td>
                         <span class="glyphicon glyphicon-ok-circle icon" style="color: #0080ff;"></span>
                         <%= link_to lesson.name, lesson_path(lesson.id) %>
-                      </td>
-                      <td class="text-right"><%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %>
+                        <p><%= attended_lesson.created_at.to_date.strftime("%Y/%m/%d") %></p>
                       </td>
                     </tr>
                   <% elsif lesson.status == "公開停止中" %>
@@ -148,8 +134,7 @@
                       <td>
                         <span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
                         <%= link_to lesson.name, lesson_path(lesson.id) %>
-                      </td>
-                      <td class="text-right text-danger"><%= "公開停止中" %>
+                        <p class="text-danger"><%= "公開停止中" %></p>
                       </td>
                     </tr>
                   <% else %>
@@ -157,9 +142,7 @@
                       <td>
                         <span class="glyphicon glyphicon-record icon" style="color: #b8b8b8;"></span>
                         <%= link_to lesson.name, lesson_path(lesson.id) %>
-                      </td>
-                      <td class="text-right">
-                        <%= "未視聴" %>
+                        <p><%= "未視聴" %></p>
                       </td>
                     </tr>
                   <% end %>

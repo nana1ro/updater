@@ -1,19 +1,17 @@
 <% @page_title = "検索結果ページ" %>
 
 <h3 class="page-header">検索結果</h3>
-<div class="row row-eq-height">
-  <% @search_lessons.each do |lesson| %>
-    <div class="col-sm-4">
-      <%= link_to lesson_path(lesson.id) do %>
-        <% if lesson.image? %>
-          <%= image_tag lesson.image.url, width: 240, height: 170, class:"lesson-image" %>
-        <% else %>
-          <%= image_tag "/images/no_image.png", width: 240, height: 170, class:"lesson-image" %>
-        <% end %>
+<% @search_lessons.each do |lesson| %>
+  <div class="media">
+    <%= link_to lesson_path(lesson.id), class:"media-left hidden-xs" do %>
+      <% if lesson.image? %>
+        <%= image_tag lesson.image.url, width: 240, height: 170, class:"lesson-image" %>
+      <% else %>
+        <%= image_tag "/images/no_image.png", width: 240, height: 170, class:"lesson-image" %>
       <% end %>
-    </div>
-    <div class="col-sm-8">
-      <h3><%= link_to lesson.name, lesson_path(lesson.id) %></h3>
+    <% end %>
+    <div class="media-body">
+      <h3 class="media-heading"><%= link_to lesson.name, lesson_path(lesson.id) %></h3>
       <% if lesson.rank %>
         <% if lesson.rank_id == 1 %>
           <span class="label label-info"><%= lesson.rank.name %></span></br>
@@ -26,8 +24,8 @@
       <h5 class="text-muted page-header time-text"><%= detailed_time(lesson.time) %></h5>
       <h5><%= lesson.description %></h5>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
 <div class="row">
   <div class="col-sm-offset-4 col-sm-6">
@@ -35,10 +33,6 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-12">
-    <% if @search_lessons.blank? %>
-      <h3><%= "該当するレッスンはありませんでした" %></h3>
-    <% end %>
-  </div>
-</div>
+<% if @search_lessons.blank? %>
+  <h3><%= "該当するレッスンはありませんでした" %></h3>
+<% end %>

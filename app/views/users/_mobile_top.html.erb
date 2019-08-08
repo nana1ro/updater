@@ -1,0 +1,24 @@
+<% @page_title = "ユーザートップページ" %>
+
+<div class="row visible-xs">
+  <div class="chart-container">
+    <canvas id="mobiletimeChart" width="240" height="180"></canvas>
+    <%= render "mobile_time_chart" %>
+    <!-- TODO: 下記、canvas内に書き込む -->
+    <p class="chart-item"><%= "目標：#{rough_time(current_user.target_time)}" %></p>
+    <p class="chart-item"><%= "実績：#{rough_time(@learning_time)}" %></p>
+    <p class="chart-item"><%= "達成率：　　#{number_to_percentage(@learning_time / current_user.target_time.to_f * 100, precision: 0)}" %></p>
+  </div>
+
+  <div class="chart-container">
+    <canvas id="mobilelessonChart" width="240" height="180"></canvas>
+    <%= render "mobile_lesson_chart" %>
+  </div>
+</div>
+
+<div class="mobile-box">
+  <%= link_to "レッスン一覧へ", categories_path, class:"btn btn-info visible-xs" %>
+  <% if user_signed_in? %>
+    <%= link_to "マイページへ", user_path(current_user.id), class:"btn btn-primary visible-xs" %>
+  <% end %>
+</div>

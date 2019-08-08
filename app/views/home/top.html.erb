@@ -1,6 +1,8 @@
 <% @page_title = "トップページ" %>
 
 <div class="top-container">
-  <h1 class="top-headline">Updater</h1>
-  <h1 class="top-link"><%= link_to "サイトの使い方", about_path %></h1>
+  <h1 class="top-headline hidden-xs">Updater</h1>
+  <h1 class="top-link hidden-xs"><%= link_to "サイトの使い方", about_path, style:"color: #b8b8b8" %></h1>
+  <h1 class="mobile-headline visible-xs">Updater</h1>
+  <h5 class="mobile-link visible-xs"><%= link_to "サイトの使い方", about_path, style:"color: #b8b8b8" %></h5>
 </div>
