@@ -1,9 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーションの概要
 
-Things you may want to cover:
+学習の実績がグラフで視覚化されるオンライン学習サイト
+
+# アプリケーションの機能一覧
 
 * Ruby version
 
