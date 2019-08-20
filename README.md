@@ -2,7 +2,7 @@
 
 学習の実績がグラフで視覚化されるオンライン学習サイト `"Updater"`
 
-|サンプル1|サンプル2|
+|サンプル画像1|サンプル画像2|
 |---|---|
 |<img src="https://github.com/Ryosuke-Tezuka/updater/blob/master/public/images/about_1.png" width="300">|<img src="https://github.com/Ryosuke-Tezuka/updater/blob/master/public/images/about_2.png" width="300">|
 
