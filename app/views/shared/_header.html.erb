@@ -1,9 +1,16 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNav">
+        <span class="sr-only">ナビゲーション</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <span class="navbar-brand"><%= image_tag "/images/logo.png", size: "250x50"%></span>
     </div>
 
+    <div class="collapse navbar-collapse" id="mainNav">
     <ul class="nav navbar-nav navbar-right">
       <li>
         <%= search_form_for @search, url: search_lessons_path, html: {class:"navbar-form search-box"} do |f| %>
@@ -103,5 +110,6 @@
         </li>
       <% end %>
     </ul>
+    </div>
   </div>
 </nav>
