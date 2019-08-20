@@ -8,12 +8,13 @@
 * 動画投稿、再生機能
 * 学習実績のグラフ化機能
 * ページネーション機能
+* 検索機能
 * レスポンシブ対応
 
-* How to run the test suite
+# アプリケーション内で使用している技術一覧
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* OS - Linux(Ubuntu)
+* 言語 - HTML,CSS,JavaScript,Ruby,SQL
+* フレームワーク - Ruby on Rails, JQuery
+* インフラ - AWS(EC2,RDS,EIP)
+* その他ツール - chart.js, carrier wave, bootstrap
